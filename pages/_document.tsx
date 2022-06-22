@@ -23,7 +23,7 @@ const Document = () => {
         />
         <link rel='manifest' href='/seo/site.webmanifest' />
       </Head>
-      <body>
+      <body className=''>
         <Main />
         <NextScript />
       </body>
