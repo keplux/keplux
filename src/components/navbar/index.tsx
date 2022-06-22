@@ -25,7 +25,7 @@ const MobileNavbar = () => {
         />
       </div>
       <Disclosure>
-        <Disclosure.Button className='group px-2'>
+        <Disclosure.Button aria-label='Menu button' className='group px-2'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             className='h-6 w-6 text-white group-hover:text-secondary-500'

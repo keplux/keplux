@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { useState } from 'react';
-import { Divider } from '../src/components';
+import { Divider, Seo } from '../src/components';
 
 // Change contact info here
 const contactInfo = {
@@ -70,6 +70,11 @@ const Contact = () => {
   };
   return (
     <div className='relative pb-16 md:pb-32'>
+      <Seo
+        title="Call CoCo's for your tree and lawn needs! (517) 759-0356"
+        description="We provide tree and lawn services in and around Adrian, MI. Whether you need your lawn mowed, a tree removed from your garage, or anything in between, we've got you covered."
+        url='https://www.cocostreeservice.com/contact'
+      />
       <header>
         <div className='relative w-screen h-32 md:h-48'>
           <Image
