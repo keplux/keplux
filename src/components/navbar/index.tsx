@@ -194,7 +194,7 @@ const DesktopNavbar = () => {
 
 export const Navbar = () => {
   return (
-    <div className='flex justify-between items-center px-4 py-2 h-20 bg-base border-b border-black'>
+    <div className='flex justify-between items-center px-4 py-2 h-20 md:h-16 bg-base border-b border-black'>
       <DesktopNavbar />
       <MobileNavbar />
     </div>
