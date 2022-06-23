@@ -1,6 +1,7 @@
+import { Field, FieldHookConfig, Form, Formik, useField } from 'formik';
 import Image from 'next/image';
-import { useState } from 'react';
 import { Divider, Seo } from '../src/components';
+import * as Yup from 'yup';
 
 // Change contact info here
 const contactInfo = {
@@ -8,66 +9,156 @@ const contactInfo = {
   email: 'cocostree2022@gmail.com',
 };
 
-const Contact = () => {
-  // Store and update form data
-  const [data, setData] = useState({
+type InputFieldProps = FieldHookConfig<string> & {
+  label: string;
+};
+
+const Input = (props: InputFieldProps) => {
+  const [field, meta] = useField(props);
+  return (
+    <div className={props.className}>
+      <label htmlFor={props.id || props.name} className='block text-white'>
+        {props.label}
+      </label>
+      <div className='relative mt-1'>
+        <Field
+          {...field}
+          {...props}
+          className='py-3 px-4 block w-full shadow-sm caret-secondary-500 focus:ring-secondary-500 focus:border-secondary-500 border border-black rounded-md'
+        />
+        {meta.touched && meta.error ? (
+          <div className='absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none'>
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              className='h-5 w-5 text-red-500'
+              viewBox='0 0 20 20'
+              fill='currentColor'
+              aria-hidden
+            >
+              <path
+                fillRule='evenodd'
+                d='M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z'
+                clipRule='evenodd'
+              />
+            </svg>
+          </div>
+        ) : null}
+      </div>
+      {meta.touched && meta.error ? (
+        <p className='mt-1 text-sm font-normal !text-red-500'>{meta.error}</p>
+      ) : null}
+    </div>
+  );
+};
+
+interface Values {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone?: string;
+  message: string;
+}
+
+const ContactForm = () => {
+  const initialValues: Values = {
     firstName: '',
     lastName: '',
     email: '',
     phone: '',
     message: '',
+  };
+
+  const validationSchema = Yup.object({
+    firstName: Yup.string().required('Required'),
+    lastName: Yup.string().required('Required'),
+    email: Yup.string().email('Invalid email address').required('Required'),
+    message: Yup.string().required('Required'),
   });
 
-  // Form state
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState(false);
-
-  // Input change handler
-  const handleChange = (e: { target: { name: any; value: any } }) => {
-    const { name, value } = e.target;
-    setData({
-      ...data,
-      [name]: value,
-    });
-  };
-
-  // Form submission handler
-  const handleSubmit = async (e: { preventDefault: () => void }) => {
-    // Set initial submission state
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    // Submit the request
-    const res = await fetch('/api/submitContactForm', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        firstName: data.firstName,
-        lastName: data.lastName,
-        email: data.email,
-        phone: data.phone,
-        message: data.message,
-      }),
+  const validate = (errors, touched) => {
+    Object.keys(errors).map((error) => {
+      if (error) {
+        return false;
+      }
     });
 
-    const response = await res.json();
+    Object.keys(touched).map((touch) => {
+      if (touch) {
+        return false;
+      }
+    });
 
-    // If submission is successful, reset form state and data
-    if (response.message === 'success') {
-      setError(false);
-      setData({
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        message: '',
-      });
-    } else {
-      setError(true);
-    }
-
-    setIsSubmitting(false);
+    return true;
   };
+
+  return (
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      onSubmit={async (values, actions) => {
+        actions.setSubmitting(true);
+        const res = await fetch('/api/submitContactForm', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            firstName: values.firstName,
+            lastName: values.lastName,
+            email: values.email,
+            phone: values.phone,
+            message: values.message,
+          }),
+        });
+
+        const data = await res.json();
+
+        // If submission is successful, reset form state and data
+        if (data.message === 'success') {
+          actions.setSubmitting(false);
+          actions.resetForm();
+        } else {
+          console.log('fail');
+        }
+      }}
+    >
+      {({ errors, touched }) => (
+        <Form className='grid grid-cols-2 gap-8'>
+          <Input label='First name' name='firstName' type='text' />
+          <Input label='Last name' name='lastName' type='text' />
+          <Input
+            className='col-span-2'
+            label='Email'
+            name='email'
+            type='email'
+          />
+          <Input
+            className='col-span-2'
+            label='Phone number'
+            name='phone'
+            type='tel'
+          />
+          <Input
+            className='col-span-2'
+            label='Message'
+            name='message'
+            type='text'
+          />
+          {/* Submit button */}
+          <div className='sm:col-span-2'>
+            <button
+              type='submit'
+              // disabled={isSubmitting}
+              className='text-white cursor-pointer mt-8 flex justify-center w-full items-center px-8 py-2 text-lg transition bg-primary-500 hover:bg-primary-400 disabled:bg-gray-400'
+            >
+              Send
+            </button>
+          </div>
+        </Form>
+      )}
+    </Formik>
+  );
+};
+
+const Contact = () => {
   return (
     <div className='relative pb-16 md:pb-32'>
       <Seo
@@ -141,120 +232,7 @@ const Contact = () => {
       <div className='px-4 max-w-3xl md:px-0 mx-auto'>
         <h2>Provide Your Info</h2>
         <p className='mt-0'>We&apos;ll get back to you as soon as possible.</p>
-        <form
-          onSubmit={handleSubmit}
-          method='POST'
-          className='mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8'
-        >
-          {/* First name */}
-          <div>
-            <label htmlFor='firstName' className='block text-white'>
-              First name
-            </label>
-            <div className='mt-1'>
-              <input
-                type='text'
-                name='firstName'
-                value={data.firstName}
-                id='firstName'
-                autoComplete='given-name'
-                className='py-3 px-4 block w-full shadow-sm focus:ring-secondary-500 focus:border-secondary-500 border border-black rounded-md'
-                onChange={handleChange}
-                required
-              />
-            </div>
-          </div>
-
-          {/* Last name */}
-          <div>
-            <label htmlFor='lastName' className='block text-white'>
-              Last name
-            </label>
-            <div className='mt-1'>
-              <input
-                type='text'
-                name='lastName'
-                value={data.lastName}
-                id='lastName'
-                autoComplete='family-name'
-                className='py-3 px-4 block w-full shadow-sm focus:ring-secondary-500 focus:border-secondary-500 border border-black rounded-md'
-                onChange={handleChange}
-                required
-              />
-            </div>
-          </div>
-
-          {/* Email */}
-          <div className='sm:col-span-2'>
-            <label htmlFor='email' className='block text-white'>
-              Email
-            </label>
-            <div className='mt-1'>
-              <input
-                id='email'
-                name='email'
-                value={data.email}
-                type='email'
-                autoComplete='email'
-                className='py-3 px-4 block w-full shadow-sm focus:ring-secondary-500 focus:border-secondary-500 border border-black rounded-md'
-                onChange={handleChange}
-                required
-              />
-            </div>
-          </div>
-
-          {/* Phone number */}
-          <div className='sm:col-span-2'>
-            <label htmlFor='phone' className='block text-white'>
-              Phone number
-            </label>
-            <div className='mt-1'>
-              <input
-                id='phone'
-                name='phone'
-                value={data.phone}
-                type='tel'
-                autoComplete='phone'
-                className='py-3 px-4 block w-full shadow-sm focus:ring-secondary-500 focus:border-secondary-500 border border-black rounded-md'
-                onChange={handleChange}
-              />
-            </div>
-          </div>
-
-          {/* Message */}
-          <div className='sm:col-span-2'>
-            <label htmlFor='message' className='block text-white'>
-              Message
-            </label>
-            <div className='mt-1'>
-              <textarea
-                id='message'
-                name='message'
-                value={data.message}
-                rows={4}
-                className='py-3 px-4 block w-full shadow-sm focus:ring-secondary-500 focus:border-secondary-500 border border-black rounded-md resize-none'
-                defaultValue={''}
-                onChange={handleChange}
-                required
-              />
-            </div>
-          </div>
-
-          {/* Submit button */}
-          <div className='sm:col-span-2'>
-            <button
-              type='submit'
-              disabled={isSubmitting}
-              className={`text-white cursor-pointer mt-8 flex justify-center w-full items-center px-8 py-2 text-lg transition ${
-                isSubmitting
-                  ? 'bg-gray-400'
-                  : 'bg-primary-500 hover:bg-primary-400'
-              }`}
-            >
-              {isSubmitting ? 'Sending' : 'Send'}
-            </button>
-          </div>
-        </form>
+        <ContactForm />
       </div>
     </div>
   );

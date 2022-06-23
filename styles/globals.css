@@ -20,6 +20,7 @@ p {
   @apply mt-2 !text-zinc-400;
 }
 
-input, textarea {
+input,
+textarea {
   @apply !bg-transparent !border-zinc-700;
 }
