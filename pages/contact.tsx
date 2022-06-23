@@ -138,7 +138,7 @@ const Contact = () => {
       <Divider>&bull;</Divider>
 
       {/* The form */}
-      <div className='px-4 max-w-3xl md:px-0 mx-auto overflow-hidden'>
+      <div className='px-4 max-w-3xl md:px-0 mx-auto'>
         <h2>Provide Your Info</h2>
         <p className='mt-0'>We&apos;ll get back to you as soon as possible.</p>
         <form
