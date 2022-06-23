@@ -2,6 +2,8 @@ import { Disclosure, Transition } from '@headlessui/react';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import logo from '../../../public/images/cocos-tree-service-badge.png';
+
 const navItems = [
   {
     label: 'Home',
@@ -15,10 +17,10 @@ const navItems = [
 
 const MobileNavbar = () => {
   return (
-    <div className='flex justify-between w-full md:hidden'>
-      <div className='relative w-12 h-12'>
+    <div className='flex justify-between items-center w-full md:hidden'>
+      <div className='relative w-16 h-16'>
         <Image
-          src='/images/cocos-tree-service-badge.png'
+          src={logo}
           alt="CoCo's Tree Service logo"
           layout='fill'
           objectFit='contain'
@@ -105,7 +107,10 @@ const MobileNavbar = () => {
                         </span>
                       </a>
                     </div>
-                    <a href='#' className='absolute top-1/2 -translate-y-1/2 right-4'>
+                    <a
+                      href='#'
+                      className='absolute top-1/2 -translate-y-1/2 right-4'
+                    >
                       <svg
                         fill='currentColor'
                         viewBox='0 0 24 24'

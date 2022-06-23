@@ -9,6 +9,14 @@ import { GiHighGrass } from '@react-icons/all-files/gi/GiHighGrass';
 import { GiLightningStorm } from '@react-icons/all-files/gi/GiLightningStorm';
 import { GiTreeRoots } from '@react-icons/all-files/gi/GiTreeRoots';
 
+import logo from '../public/images/cocos-tree-service-logo.png';
+import grass from '../public/images/grass.jpg';
+import treeCutting from '../public/images/tree-cutting.jpg';
+import mowing from '../public/images/mowing.jpg';
+import chainsaw from '../public/images/chainsaw.jpg';
+import carDamage from '../public/images/car-damage.jpg';
+import landClearing from '../public/images/land-clearing.jpg';
+
 const services = [
   {
     label: 'Tree Trimming and Removal',
@@ -46,19 +54,19 @@ const services = [
 
 const images = [
   {
-    src: '/images/mowing.jpg',
+    src: mowing,
     alt: 'A picture of grass being cut',
   },
   {
-    src: '/images/chainsaw.jpg',
+    src: chainsaw,
     alt: 'A chainsaw cutting through a tree branch',
   },
   {
-    src: '/images/car-damage.jpg',
+    src: carDamage,
     alt: 'A tree fallen on a car',
   },
   {
-    src: '/images/land-clearing.jpg',
+    src: landClearing,
     alt: 'A picture of land clearing',
   },
 ];
@@ -74,7 +82,7 @@ const Home: NextPage = () => {
       <header>
         <div className='relative w-screen h-32 md:h-48'>
           <Image
-            src='/images/grass.jpg'
+            src={grass}
             alt='Grassy header'
             layout='fill'
             objectFit='cover'
@@ -84,10 +92,11 @@ const Home: NextPage = () => {
           <div className='relative max-w-xl -mt-16 mx-auto px-2 py-8 bg-base border border-black'>
             <div className='relative h-72'>
               <Image
-                src='/images/cocos-tree-service-logo.png'
+                src={logo}
                 alt="Coco's Tree Service logo"
                 layout='fill'
                 objectFit='contain'
+                priority
               />
             </div>
           </div>
@@ -121,7 +130,7 @@ const Home: NextPage = () => {
       <section className='mt-16 md:mt-32'>
         <div className='relative w-screen h-80'>
           <Image
-            src='/images/tree-cutting.jpg'
+            src={treeCutting}
             alt='Worker cutting tree limbs'
             layout='fill'
             objectFit='cover'
@@ -200,16 +209,11 @@ const Home: NextPage = () => {
         <h2 className='text-center text-2xl text-secondary-500 uppercase'>
           Whatever you need done, we&apos;ve got your back
         </h2>
-        <div className='mt-16 grid gap-4 grid-cols-1 lg:grid-cols-2 xl:grid-cols-4'>
+        <div className='mt-16 grid gap-4 grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 max-w-[1920px] mx-auto'>
           {images.map((img, index) => {
             return (
-              <div key={index} className='relative h-64'>
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  layout='fill'
-                  objectFit='cover'
-                />
+              <div key={index} className='relative h-64 overflow-hidden'>
+                <Image src={img.src} alt={img.alt} objectFit='cover' />
               </div>
             );
           })}
