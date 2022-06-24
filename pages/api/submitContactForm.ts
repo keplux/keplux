@@ -6,8 +6,8 @@ async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
   try {
     const { firstName, lastName, email, phone, message } = req.body;
     const msg = {
-      to: 'c_jardine@icloud.com', // Change to your recipient
-      from: 'dev@keplux.com', // Change to your verified sender
+      to: 'contact@cocostreeservice.com', // Change to your recipient
+      from: 'contact@cocostreeservice.com', // Change to your verified sender
       subject: `${firstName} ${lastName} has sent you a message.`,
       html: `
         <body style="background:white;padding:2em;font-family:sans-serif;">
