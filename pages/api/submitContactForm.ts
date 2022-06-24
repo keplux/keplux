@@ -3,13 +3,12 @@ import { NextApiRequest, NextApiResponse } from 'next';
 async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
   const sgMail = require('@sendgrid/mail');
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-  try {
-    const { firstName, lastName, email, phone, message } = req.body;
-    const msg = {
-      to: 'contact@cocostreeservice.com', // Change to your recipient
-      from: 'contact@cocostreeservice.com', // Change to your verified sender
-      subject: `${firstName} ${lastName} has sent you a message.`,
-      html: `
+  const { firstName, lastName, email, phone, message } = req.body;
+  const msg = {
+    to: 'contact@cocostreeservice.com', // Change to your recipient
+    from: 'contact@cocostreeservice.com', // Change to your verified sender
+    subject: `${firstName} ${lastName} has sent you a message.`,
+    html: `
         <body style="background:white;padding:2em;font-family:sans-serif;">
           <div style="background:white;padding:2em;border:2px solid black;border-radius:0.5em;max-width:728px;margin:0 auto;">
             <p style="text-align:center;font-size:20px">${firstName} ${lastName} sent you a message!</p>
@@ -34,24 +33,17 @@ async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
             <p style="margin-left:2em;">${message}</p>
           </div>
         </body>`,
-    };
-    sgMail
-      .send(msg)
-      .then(() => {
-        console.log('Email sent');
-      })
-      .catch((error: any) => {
-        console.error(error);
-      });
-  } catch (error) {
-    let errorMessage = '';
-    if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    return res.status(500).json({ error: errorMessage });
-  }
+  };
 
-  return res.status(200).json({ message: 'success' });
+  sgMail
+    .send(msg)
+    .then(() => {
+      return res.status(200).json({ message: 'success' });
+    })
+    .catch((error: any) => {
+      console.error(error, 'jkdljlf');
+      return res.status(500).json({ error: error });
+    });
 }
 
 export default sendEmail;

@@ -2,9 +2,9 @@ import Image from 'next/image';
 import { ContactForm, Divider, Seo } from '../src/components';
 
 // Change contact info here
-const contactInfo = {
+export const contactInfo = {
   phone: '(517) 759-0356',
-  email: 'cocostree2022@gmail.com',
+  email: 'contact@cocostreeservice.com',
 };
 
 const Contact = () => {
@@ -41,7 +41,7 @@ const Contact = () => {
           {/* Phone Icon */}
           <svg
             xmlns='http://www.w3.org/2000/svg'
-            className='h-5 w-5 text-primary-500'
+            className='h-5 w-5 text-secondary-500'
             viewBox='0 0 20 20'
             fill='currentColor'
           >
@@ -57,7 +57,7 @@ const Contact = () => {
           {/* Email icon */}
           <svg
             xmlns='http://www.w3.org/2000/svg'
-            className='h-5 w-5 text-primary-500'
+            className='h-5 w-5 text-secondary-500'
             viewBox='0 0 20 20'
             fill='currentColor'
           >

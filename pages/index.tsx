@@ -103,7 +103,7 @@ const Home: NextPage = () => {
         </div>
       </header>
 
-      <section className='mt-16 md:mt-32 px-4 xl:px-0 max-w-5xl mx-auto'>
+      <section className='mt-16 px-4 xl:px-0 max-w-5xl mx-auto'>
         <h1 className='uppercase'>See You at the Top!</h1>
         <p className='mt-4'>
           CoCo&apos;s Tree &amp; Lawn Service is a small business based out of
@@ -127,7 +127,7 @@ const Home: NextPage = () => {
         </Button>
       </section>
 
-      <section className='mt-16 md:mt-32'>
+      <section className='mt-16'>
         <div className='relative w-screen h-80'>
           <Image
             src={treeCutting}
