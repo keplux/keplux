@@ -5,7 +5,7 @@ async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
   const { firstName, lastName, email, phone, message } = req.body;
   const msg = {
-    to: 'contact@cocostreeservice.com', // Change to your recipient
+    to: 'cocostree2022@gmail.com', // Change to your recipient
     from: 'contact@cocostreeservice.com', // Change to your verified sender
     subject: `${firstName} ${lastName} has sent you a message.`,
     html: `
