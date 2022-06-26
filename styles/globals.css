@@ -24,3 +24,11 @@ input,
 textarea {
   @apply !bg-transparent !border-zinc-700;
 }
+
+.link {
+  @apply uppercase font-normal text-sm text-zinc-100 hover:text-primary-300 transition;
+}
+
+.container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
