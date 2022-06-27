@@ -1,21 +1,17 @@
-import { Disclosure, Transition } from '@headlessui/react';
+import { Transition } from '@headlessui/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { contactInfo } from '../../../pages/contact';
 import { Fragment } from 'react';
 import { Popover } from '@headlessui/react';
 import {
   BookmarkAltIcon,
   BriefcaseIcon,
-  CheckCircleIcon,
   DesktopComputerIcon,
   GlobeAltIcon,
   InformationCircleIcon,
   MenuIcon,
   NewspaperIcon,
   OfficeBuildingIcon,
-  PhoneIcon,
-  PlayIcon,
   ShieldCheckIcon,
   UserGroupIcon,
   XIcon,
@@ -34,6 +30,7 @@ import { FaWheelchair } from '@react-icons/all-files/fa/FaWheelchair';
 import { HiDocumentAdd } from '@react-icons/all-files/hi/HiDocumentAdd';
 
 import logo from '../../../public/logos/keplux-light-brand-transparent.png';
+import { classNames } from '../../../utils/classNames';
 
 const solutions = [
   {
@@ -130,10 +127,6 @@ const blogPosts = [
       'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2300&q=80',
   },
 ];
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ');
-}
 
 export const Navbar = () => {
   return (
@@ -253,151 +246,15 @@ export const Navbar = () => {
                   </>
                 )}
               </Popover>
-              <a
-                href='#'
-                className='link'
-              >
+              <a href='#' className='link'>
                 Projects
               </a>
-              <a
-                href='#'
-                className='link'
-              >
+              <a href='#' className='link'>
                 Pricing
               </a>
-              <a
-                href='#'
-                className='link'
-              >
+              <a href='#' className='link'>
                 Contact
               </a>
-              <Popover>
-                {({ open }) => (
-                  <>
-                    <Popover.Button
-                      className={classNames(
-                        open ? 'text-zinc-900' : 'text-zinc-500',
-                        'group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-zinc-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
-                      )}
-                    >
-                      <span>More</span>
-                      <ChevronDownIcon
-                        className={classNames(
-                          open ? 'text-zinc-600' : 'text-zinc-400',
-                          'ml-2 h-5 w-5 group-hover:text-zinc-500'
-                        )}
-                        aria-hidden='true'
-                      />
-                    </Popover.Button>
-
-                    <Transition
-                      as={Fragment}
-                      enter='transition ease-out duration-200'
-                      enterFrom='opacity-0 -translate-y-1'
-                      enterTo='opacity-100 translate-y-0'
-                      leave='transition ease-in duration-150'
-                      leaveFrom='opacity-100 translate-y-0'
-                      leaveTo='opacity-0 -translate-y-1'
-                    >
-                      <Popover.Panel className='hidden md:block absolute z-10 top-full inset-x-0 transform shadow-lg'>
-                        <div className='absolute inset-0 flex'>
-                          <div className='bg-white w-1/2' />
-                          <div className='bg-zinc-50 w-1/2' />
-                        </div>
-                        <div className='relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2'>
-                          <nav className='grid gap-y-10 px-4 py-8 bg-white sm:grid-cols-2 sm:gap-x-8 sm:py-12 sm:px-6 lg:px-8 xl:pr-12'>
-                            <div>
-                              <h3 className='text-sm font-medium tracking-wide text-zinc-500 uppercase'>
-                                Company
-                              </h3>
-                              <ul role='list' className='mt-5 space-y-6'>
-                                {company.map((item) => (
-                                  <li key={item.name} className='flow-root'>
-                                    <a
-                                      href={item.href}
-                                      className='-m-3 p-3 flex items-center rounded-md text-base font-medium text-zinc-900 hover:bg-zinc-50'
-                                    >
-                                      <item.icon
-                                        className='flex-shrink-0 h-6 w-6 text-zinc-400'
-                                        aria-hidden='true'
-                                      />
-                                      <span className='ml-4'>{item.name}</span>
-                                    </a>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                            <div>
-                              <h3 className='text-sm font-medium tracking-wide text-zinc-500 uppercase'>
-                                Resources
-                              </h3>
-                              <ul role='list' className='mt-5 space-y-6'>
-                                {resources.map((item) => (
-                                  <li key={item.name} className='flow-root'>
-                                    <a
-                                      href={item.href}
-                                      className='-m-3 p-3 flex items-center rounded-md text-base font-medium text-zinc-900 hover:bg-zinc-50'
-                                    >
-                                      <item.icon
-                                        className='flex-shrink-0 h-6 w-6 text-zinc-400'
-                                        aria-hidden='true'
-                                      />
-                                      <span className='ml-4'>{item.name}</span>
-                                    </a>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          </nav>
-                          <div className='bg-zinc-50 px-4 py-8 sm:py-12 sm:px-6 lg:px-8 xl:pl-12'>
-                            <div>
-                              <h3 className='text-sm font-medium tracking-wide text-zinc-500 uppercase'>
-                                From the blog
-                              </h3>
-                              <ul role='list' className='mt-6 space-y-6'>
-                                {blogPosts.map((post) => (
-                                  <li key={post.id} className='flow-root'>
-                                    <a
-                                      href={post.href}
-                                      className='-m-3 p-3 flex rounded-lg hover:bg-zinc-100'
-                                    >
-                                      <div className='hidden sm:block flex-shrink-0'>
-                                        <img
-                                          className='w-32 h-20 object-cover rounded-md'
-                                          src={post.imageUrl}
-                                          alt=''
-                                        />
-                                      </div>
-                                      <div className='w-0 flex-1 sm:ml-8'>
-                                        <h4 className='text-base font-medium text-zinc-900 truncate'>
-                                          {post.name}
-                                        </h4>
-                                        <p className='mt-1 text-sm text-zinc-500'>
-                                          {post.preview}
-                                        </p>
-                                      </div>
-                                    </a>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                            <div className='mt-6 text-sm font-medium'>
-                              <a
-                                href='#'
-                                className='text-indigo-600 hover:text-indigo-500'
-                              >
-                                {' '}
-                                View all posts{' '}
-                                <span aria-hidden='true'>&rarr;</span>
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                      </Popover.Panel>
-                    </Transition>
-                  </>
-                )}
-              </Popover>
             </Popover.Group>
             <div className='flex items-center md:ml-12'>
               <a
@@ -433,13 +290,6 @@ export const Navbar = () => {
           <div className='rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-zinc-50'>
             <div className='pt-5 pb-6 px-5 sm:pb-8'>
               <div className='flex items-center justify-between'>
-                <div>
-                  <img
-                    className='h-8 w-auto'
-                    src='https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg'
-                    alt='Workflow'
-                  />
-                </div>
                 <div className='-mr-2'>
                   <Popover.Button className='bg-white rounded-md p-2 inline-flex items-center justify-center text-zinc-400 hover:text-zinc-500 hover:bg-zinc-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500'>
                     <span className='sr-only'>Close menu</span>
