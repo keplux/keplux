@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-zinc-900 text-zinc-400 font-[300];
+  @apply bg-[#111111] text-zinc-400 font-[300];
 }
 
 h1 {

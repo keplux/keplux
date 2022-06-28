@@ -26,11 +26,13 @@ import { MdWeb } from '@react-icons/all-files/md/MdWeb';
 import { MdPhoneIphone } from '@react-icons/all-files/md/MdPhoneIphone';
 import { SiGoogleanalytics } from '@react-icons/all-files/si/SiGoogleanalytics';
 import { MdSearch } from '@react-icons/all-files/md/MdSearch';
-import { FaWheelchair } from '@react-icons/all-files/fa/FaWheelchair';
+import { MdShoppingCart } from '@react-icons/all-files/md/MdShoppingCart';
 import { HiDocumentAdd } from '@react-icons/all-files/hi/HiDocumentAdd';
 
 import logo from '../../../public/logos/keplux-light-brand-transparent.png';
+import fullLogo from '../../../public/logos/keplux-light-transparent.png';
 import { classNames } from '../../../utils/classNames';
+import HeadlessLink from '../HeadlessLink';
 
 const solutions = [
   {
@@ -48,18 +50,11 @@ const solutions = [
     icon: AiFillCode,
   },
   {
-    name: 'Hosting',
+    name: 'E-Commerce',
     description:
-      'Websites live on the internet through a hosting provider. You can choose to host with us or we can help you get set up on your own hosting.',
-    href: '/services/hosting',
-    icon: FaServer,
-  },
-  {
-    name: 'Maintenance',
-    description:
-      "We will ensure that your website's dependencies are kept up to date to prevent online threats.",
-    href: '/services/maintenance',
-    icon: FaTools,
+      "If you need an online store, we have you covered! There are a lot of options here, so we'll work with you to determine the best options for your needs.",
+    href: '/services/e-commerce',
+    icon: MdShoppingCart,
   },
   {
     name: 'Content Management',
@@ -69,6 +64,20 @@ const solutions = [
     icon: HiDocumentAdd,
   },
   {
+    name: 'Hosting',
+    description:
+      'Websites live on the internet through a hosting provider. You can choose to host with us or we can help you get set up on your own hosting.',
+    href: '/services/hosting',
+    icon: FaServer,
+  },
+  {
+    name: 'SEO and Accessibility',
+    description:
+      "Having a website is only useful if it can be found. The modern tools we use will boost your website higher than what you'd get from our competitors.",
+    href: '/services/seo',
+    icon: MdSearch,
+  },
+  {
     name: 'Analytics',
     description:
       "It's important to understand how people are engaging with your website. We can add Google Analytics to your website, giving you access to the important data.",
@@ -76,20 +85,33 @@ const solutions = [
     icon: SiGoogleanalytics,
   },
   {
-    name: 'Search Engine Optimization',
+    name: 'Maintenance',
     description:
-      "Having a website is only useful if it can be found. The modern tools we use will boost your website higher than what you'd get from our competitors.",
-    href: '/services/seo',
-    icon: MdSearch,
-  },
-  {
-    name: 'Accessibility',
-    description:
-      'We believe in breaking down barriers. This includes ensuring users from all walks of life can access your website without issue.',
-    href: '/accessibility',
-    icon: FaWheelchair,
+      "We will ensure that your website's dependencies are kept up to date to prevent online threats.",
+    href: '/services/maintenance',
+    icon: FaTools,
   },
 ];
+
+const mobileNav = [
+  {
+    label: 'Home',
+    href: '/',
+  },
+  {
+    label: 'Our Work',
+    href: '/projects',
+  },
+  {
+    label: 'About Us',
+    href: '/about',
+  },
+  {
+    label: 'Contact',
+    href: '/contact',
+  },
+];
+
 const callsToAction = [
   { name: 'View Our Work', href: '/projects', icon: MdWeb },
   { name: 'Contact Us', href: '/contact', icon: MdPhoneIphone },
@@ -191,45 +213,47 @@ export const Navbar = () => {
                       <Popover.Panel className='hidden md:block absolute z-10 top-full inset-x-0 transform shadow-lg bg-zinc-900'>
                         <div className='max-w-7xl mx-auto grid gap-y-6 px-4 py-6 sm:grid-cols-2 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-4 lg:px-8 lg:py-12 xl:py-16'>
                           {solutions.map((item) => (
-                            <a
+                            <Popover.Button
+                              as={HeadlessLink}
                               key={item.name}
                               href={item.href}
-                              className='-m-3 p-3 flex flex-col justify-between rounded-lg hover:bg-primary-900/25 sm:transition'
                             >
-                              <div className='flex md:h-full lg:flex-col'>
-                                <div className='flex-shrink-0'>
-                                  <span className='inline-flex items-center justify-center h-10 w-10 rounded-md bg-indigo-600 text-white sm:h-12 sm:w-12'>
-                                    <item.icon
-                                      className='h-6 w-6'
-                                      aria-hidden='true'
-                                    />
-                                  </span>
-                                </div>
-                                <div className='ml-4 md:flex-1 md:flex md:flex-col md:justify-between lg:ml-0 lg:mt-4'>
-                                  <div>
-                                    <p className='font-normal !text-white'>
-                                      {item.name}
-                                    </p>
-                                    <p className='mt-1 text-sm text-zinc-500'>
-                                      {item.description}
+                              <a className='-m-3 p-3 flex flex-col justify-between rounded-lg hover:bg-primary-900/25 sm:transition'>
+                                <div className='flex md:h-full lg:flex-col'>
+                                  <div className='flex-shrink-0'>
+                                    <span className='inline-flex items-center justify-center h-10 w-10 rounded-md bg-indigo-600 text-white sm:h-12 sm:w-12'>
+                                      <item.icon
+                                        className='h-6 w-6'
+                                        aria-hidden='true'
+                                      />
+                                    </span>
+                                  </div>
+                                  <div className='ml-4 md:flex-1 md:flex md:flex-col md:justify-between lg:ml-0 lg:mt-4'>
+                                    <div>
+                                      <p className='font-normal !text-white'>
+                                        {item.name}
+                                      </p>
+                                      <p className='mt-1 text-sm text-zinc-500'>
+                                        {item.description}
+                                      </p>
+                                    </div>
+                                    <p className='mt-2 text-sm font-normal !text-indigo-300 lg:mt-4'>
+                                      Learn more{' '}
+                                      <span aria-hidden='true'>&rarr;</span>
                                     </p>
                                   </div>
-                                  <p className='mt-2 text-sm font-normal !text-indigo-300 lg:mt-4'>
-                                    Learn more{' '}
-                                    <span aria-hidden='true'>&rarr;</span>
-                                  </p>
                                 </div>
-                              </div>
-                            </a>
+                              </a>
+                            </Popover.Button>
                           ))}
                         </div>
-                        <div className='bg-zinc-900'>
+                        <div className='bg-primary-900'>
                           <div className='max-w-7xl mx-auto space-y-6 px-4 py-5 sm:flex sm:space-y-0 sm:space-x-10 sm:px-6 lg:px-8'>
                             {callsToAction.map((item) => (
                               <div key={item.name} className='flow-root'>
                                 <a
                                   href={item.href}
-                                  className='-m-3 p-3 flex items-center rounded-md text-indigo-300 hover:bg-primary-900/25'
+                                  className='-m-3 p-3 flex items-center rounded-md text-indigo-200 hover:bg-primary-600/25'
                                 >
                                   <item.icon
                                     className='flex-shrink-0 h-6 w-6 text-zinc-100'
@@ -287,16 +311,44 @@ export const Navbar = () => {
           focus
           className='absolute z-30 top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden'
         >
-          <div className='rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-zinc-50'>
-            <div className='pt-5 pb-6 px-5 sm:pb-8'>
-              <div className='flex items-center justify-between'>
+          <div className='rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-zinc-900 divide-y-2 divide-zinc-700'>
+            <div className='py-6 px-5'>
+              <div className='flex items-center justify-end'>
+                <Image
+                  src={fullLogo}
+                  alt='Keplux Development logo'
+                  height={512}
+                  objectFit='contain'
+                  objectPosition='left'
+                />
                 <div className='-mr-2'>
-                  <Popover.Button className='bg-white rounded-md p-2 inline-flex items-center justify-center text-zinc-400 hover:text-zinc-500 hover:bg-zinc-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500'>
+                  <Popover.Button className='bg-zinc-900 rounded-md p-2 inline-flex items-center justify-center text-primary-500 hover:text-primary-700 hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500'>
                     <span className='sr-only'>Close menu</span>
                     <XIcon className='h-6 w-6' aria-hidden='true' />
                   </Popover.Button>
                 </div>
               </div>
+              <div className='mt-4 grid grid-cols-2 gap-4'>
+                {mobileNav.map((item) => {
+                  return (
+                    <Link key={item.label} href={item.href}>
+                      <a className='rounded-md !text-lg !capitalize font-medium link'>
+                        {item.label}
+                      </a>
+                    </Link>
+                  );
+                })}
+              </div>
+              <div className='mt-6'>
+                <p className='mt-6 text-center text-base font-medium text-zinc-500'>
+                  Existing client?{' '}
+                  <a href='#' className='text-indigo-600 hover:text-indigo-500'>
+                    Sign in
+                  </a>
+                </p>
+              </div>
+            </div>
+            <div className='pt-5 pb-6 px-5 sm:pb-8'>
               <div className='mt-6 sm:mt-8'>
                 <nav>
                   <div className='grid gap-7 sm:grid-cols-2 sm:gap-y-8 sm:gap-x-4'>
@@ -304,12 +356,12 @@ export const Navbar = () => {
                       <a
                         key={item.name}
                         href={item.href}
-                        className='-m-3 flex items-center p-3 rounded-lg hover:bg-zinc-50'
+                        className='-m-3 flex items-center p-3 rounded-lg hover:bg-primary-900/25 transition'
                       >
                         <div className='flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12'>
                           <item.icon className='h-6 w-6' aria-hidden='true' />
                         </div>
-                        <div className='ml-4 text-base font-medium text-zinc-900'>
+                        <div className='ml-4 text-zinc-100 font-normal'>
                           {item.name}
                         </div>
                       </a>
@@ -325,65 +377,6 @@ export const Navbar = () => {
                     </a>
                   </div>
                 </nav>
-              </div>
-            </div>
-            <div className='py-6 px-5'>
-              <div className='grid grid-cols-2 gap-4'>
-                <a
-                  href='#'
-                  className='rounded-md text-base font-medium text-zinc-900 hover:text-zinc-700'
-                >
-                  Pricing
-                </a>
-
-                <a
-                  href='#'
-                  className='rounded-md text-base font-medium text-zinc-900 hover:text-zinc-700'
-                >
-                  Docs
-                </a>
-
-                <a
-                  href='#'
-                  className='rounded-md text-base font-medium text-zinc-900 hover:text-zinc-700'
-                >
-                  Company
-                </a>
-
-                <a
-                  href='#'
-                  className='rounded-md text-base font-medium text-zinc-900 hover:text-zinc-700'
-                >
-                  Resources
-                </a>
-
-                <a
-                  href='#'
-                  className='rounded-md text-base font-medium text-zinc-900 hover:text-zinc-700'
-                >
-                  Blog
-                </a>
-
-                <a
-                  href='#'
-                  className='rounded-md text-base font-medium text-zinc-900 hover:text-zinc-700'
-                >
-                  Contact Sales
-                </a>
-              </div>
-              <div className='mt-6'>
-                <a
-                  href='#'
-                  className='w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700'
-                >
-                  Sign up
-                </a>
-                <p className='mt-6 text-center text-base font-medium text-zinc-500'>
-                  Existing customer?{' '}
-                  <a href='#' className='text-indigo-600 hover:text-indigo-500'>
-                    Sign in
-                  </a>
-                </p>
               </div>
             </div>
           </div>

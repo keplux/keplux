@@ -2,50 +2,20 @@ import { NextPage } from 'next';
 import Image from 'next/image';
 import { Header } from '../../src/components';
 
-import vercelLogo from '../../public/images/vercel-logo.svg';
-import nextjsLogo from '../../public/images/nextjs-logo.png';
-import tailwindLogo from '../../public/images/tailwind-logo.svg';
-import sanityLogo from '../../public/images/sanity-logo.svg';
-import figmaLogo from '../../public/images/figma-logo.svg';
-import { InboxIcon, SparklesIcon } from '@heroicons/react/outline';
-import { GoFlame } from '@react-icons/all-files/go/GoFlame';
+import vercelLogo from '../../public/images/technology-logos/vercel-logo.svg';
+import nextjsLogo from '../../public/images/technology-logos/nextjs-logo.png';
+import tailwindLogo from '../../public/images/technology-logos/tailwind-logo.svg';
+import sanityLogo from '../../public/images/technology-logos/sanity-logo.svg';
+import figmaLogo from '../../public/images/technology-logos/figma-logo.svg';
 import { SiReact } from '@react-icons/all-files/si/SiReact';
+import {MdShoppingCart} from '@react-icons/all-files/md/MdShoppingCart'
+import sanityIcon from '../../public/images/sanity-icon.png';
+import developmentImg from '../../public/images/development.png';
+import sanityStudio from '../../public/images/sanity-studio.png';
+import store from '../../public/images/ecommerce.png';
 
 import { classNames } from '../../utils/classNames';
 import Link from 'next/link';
-
-const process = [
-  {
-    id: 1,
-    title: 'Discovery',
-    description:
-      'We will have a meeting or you can submit your answers to our questionnaire, where you tell us about your business and help us understand what your needs are.',
-  },
-  {
-    id: 2,
-    title: 'Wireframing',
-    description:
-      'We will create a basic wireframe of our vision of how the website should look based on the previous information provided.',
-  },
-  {
-    id: 3,
-    title: 'Initial Approval',
-    description:
-      "Once you have approved the wireframe, we will come up with a full design. At this stage, it's important that you're satisfied with the layout as significant revisions may incur an additional charge.",
-  },
-  {
-    id: 4,
-    title: 'Mockups and Revisions',
-    description:
-      "Now we're getting somewhere! We will submit mockups of your website for your approval. This version will feature the final fonts, colors, images, and other content.",
-  },
-  {
-    id: 5,
-    title: 'Final Design Approval',
-    description:
-      'At this stage, you should be happy with the expected final result. Minor changes may be implemented at our discretion, but changes outside of the original scope may incur an additional charge.',
-  },
-];
 
 const DevelopmentPage: NextPage = () => {
   return (
@@ -108,28 +78,33 @@ const DevelopmentPage: NextPage = () => {
                 </div>
               </div>
               <div className='mt-12 sm:mt-16 lg:mt-0'>
-                <div className='pl-4 -mr-48 sm:pl-6 md:-mr-16 lg:px-0 lg:m-0 lg:relative lg:h-full'>
-                  <img
-                    className='w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none'
-                    src='/images/development-2.png'
-                    alt='Inbox user interface'
-                  />
+                <div className='lg:absolute w-full max-w-5xl lg:h-full'>
+                  <div className='relative h-48 lg:h-full w-full rounded-xl overflow-hidden shadow-xl'>
+                    <Image
+                      src={developmentImg}
+                      alt='Inbox user interface'
+                      layout='fill'
+                      objectFit='cover'
+                      objectPosition='top left'
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+
           <div className='mt-24'>
             <div className='lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:grid-flow-col-dense lg:gap-24'>
-              <div className='px-4 max-w-xl mx-auto sm:px-6 lg:py-32 lg:max-w-none lg:mx-0 lg:px-0 lg:col-start-2'>
+              <div className='px-4 max-w-xl mx-auto sm:px-6 lg:py-16 lg:max-w-none lg:mx-0 lg:px-0 lg:col-start-2'>
                 <div>
                   <div>
-                    <span className='h-12 w-12 rounded-md flex items-center justify-center bg-indigo-600'>
-                      <img className='h-6 w-6' src='/images/sanity-icon.png' />
+                    <span className='h-12 w-12 p-3 rounded-md flex items-center justify-center bg-indigo-600'>
+                      <Image src={sanityIcon} alt='Sanity.io icon' />
                     </span>
                   </div>
                   <div className='mt-6'>
                     <h2 className='text-3xl font-semibold tracking-tight text-zinc-100'>
-                      Manage your content your way.
+                      Content management solutions to keep your site updated.
                     </h2>
                     <p className='mt-4'>
                       Does the content on your website need to be updated
@@ -152,7 +127,7 @@ const DevelopmentPage: NextPage = () => {
                     </p>
                     <div className='mt-6'>
                       <h3 className='text-zinc-100 text-xl font-semibold'>
-                        Want to learn more about content management?
+                        We can also manage your content for you.
                       </h3>
                       <Link href='/services/content-updates'>
                         <a className='mt-4 text-white bg-primary-600 border border-transparent rounded-md shadow px-5 py-3 inline-flex items-center text-base font-medium hover:bg-primary-500 transition'>
@@ -163,13 +138,71 @@ const DevelopmentPage: NextPage = () => {
                   </div>
                 </div>
               </div>
-              <div className='mt-12 sm:mt-16 lg:mt-0 lg:col-start-1'>
-                <div className='pr-4 -ml-48 sm:pr-6 md:-ml-16 lg:px-0 lg:m-0 lg:relative lg:h-full'>
-                  <img
-                    className='w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:right-0 lg:h-full lg:w-auto lg:max-w-none'
-                    src='https://cdn.sanity.io/images/3do82whm/next/ba70e2ccf32f958597d1f5ad5d97a91643618340-1397x966.png'
-                    alt='Customer profile user interface'
-                  />
+              <div className='relative mt-12 lg:-ml-[512px] sm:mt-16 lg:mt-0 lg:col-start-1'>
+                <div className='lg:absolute right-0 w-full max-w-5xl lg:h-full'>
+                  <div className='relative h-96 lg:h-full w-full rounded-xl overflow-hidden shadow-xl'>
+                    <Image
+                      src={sanityStudio}
+                      alt='Inbox user interface'
+                      layout='fill'
+                      objectFit='cover'
+                      objectPosition='top right'
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className='mt-24 relative'>
+            <div className='lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:grid-flow-col-dense lg:gap-24'>
+              <div className='px-4 max-w-xl mx-auto sm:px-6 lg:py-16 lg:max-w-none lg:mx-0 lg:px-0'>
+                <div>
+                  <div>
+                    <span className='h-12 w-12 rounded-md flex items-center justify-center bg-indigo-600'>
+                      <MdShoppingCart
+                        className='h-6 w-6 text-white'
+                        aria-hidden='true'
+                      />
+                    </span>
+                  </div>
+                  <div className='mt-6'>
+                    <h2 className='text-3xl font-semibold tracking-tight text-zinc-100'>
+                      Custom e-commerce websites that reflect your brand
+                      identity.
+                    </h2>
+                    <p className='mt-4'>
+                      The best e-commerce websites load fast, regardless of how
+                      many products are listed, and should reflect the
+                      company&apos;s brand. Using headless e-commerce
+                      technologies, we can create an e-commerce design that you
+                      love and your customers don&apos;t get frustrated with.
+                    </p>
+                    <div className='mt-6'>
+                      <h3 className='text-zinc-100 text-xl font-semibold'>
+                        Need help setting up an online store?
+                      </h3>
+                      <a
+                        href='#'
+                        className='mt-4 text-white bg-primary-600 border border-transparent rounded-md shadow px-5 py-3 inline-flex items-center text-base font-medium hover:bg-primary-500 transition'
+                      >
+                        Get a free quote
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className='mt-12 sm:mt-16 lg:mt-0'>
+                <div className='lg:absolute w-full max-w-5xl lg:h-full'>
+                  <div className='relative h-96 lg:h-full w-full rounded-xl overflow-hidden shadow-xl'>
+                    <Image
+                      src={store}
+                      alt='Inbox user interface'
+                      layout='fill'
+                      objectFit='cover'
+                      objectPosition='top left'
+                    />
+                  </div>
                 </div>
               </div>
             </div>
