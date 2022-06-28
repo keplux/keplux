@@ -55,8 +55,8 @@ const DesignPage: NextPage = () => {
               <div className='pt-10 pb-12 px-6 sm:pt-16 sm:px-16 lg:py-16 lg:pr-0 xl:py-20 xl:px-20'>
                 <section className='lg:self-center'>
                   <h2 className='text-3xl font-semibold text-white sm:text-4xl'>
-                    <span className='block'>Ready to get started?</span>
-                    <span className='block'>It&apos;s easy!</span>
+                    <span className='block'>Bringing your own design?</span>
+                    <span className='block'>Let&apos;s get started!</span>
                   </h2>
                   <p className='mt-4 text-lg leading-6 !text-primary-200'>
                     We work with you every step of the way, ensuring you&apos;re
@@ -77,7 +77,7 @@ const DesignPage: NextPage = () => {
             </div>
           </div>
         </article>
-        
+
         <article>
           <div className='max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-20 lg:px-8'>
             <div className='lg:grid lg:grid-cols-3 lg:gap-8'>

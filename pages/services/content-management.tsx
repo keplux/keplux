@@ -6,7 +6,6 @@ import { CheckIcon } from '@heroicons/react/outline';
 
 import { FaServer } from '@react-icons/all-files/fa/FaServer';
 import { FaTools } from '@react-icons/all-files/fa/FaTools';
-import Link from 'next/link';
 
 const features = [
   {
@@ -30,7 +29,7 @@ const features = [
   },
 ];
 
-const supportLinks = [
+const bundledServices = [
   {
     name: 'Hosting',
     href: '/services/hosting',
@@ -56,7 +55,7 @@ const ContentManagementPage: NextPage = () => {
         description="Making content changes on your website shouldn't be a burden. We make it easy and intuitive, or we can be retained to do it for you."
       />
       <main>
-        <div className='bg-white relative text-center max-w-8xl w-full'>
+        <article className='bg-white relative text-center max-w-8xl w-full'>
           <div className='absolute -inset-0 h-1/3 lg:h-1/2 bg-[#111111]' />
           <div className='relative z-10 mx-4 shadow-xl inline-block rounded-b-lg'>
             <Image
@@ -64,18 +63,18 @@ const ContentManagementPage: NextPage = () => {
               alt='Content management with Sanity Studio'
             />
           </div>
-          <div className='bg-white relative max-w-7xl mx-auto -mt-8 pt-24 pb-16 px-4 sm:px-6 lg:py-24 lg:px-8'>
-            <div className='max-w-3xl mx-auto text-center'>
-              <h2 className='text-3xl font-semibold text-zinc-900'>
+          <section className='bg-white relative max-w-7xl mx-auto -mt-8 pt-24 pb-16 px-4 sm:px-6 lg:py-24 lg:px-8'>
+            <div className='max-w-5xl mx-auto text-center'>
+              <h2 className='text-5xl font-semibold text-zinc-900'>
                 Fully-customizable content management system with{' '}
                 <span className='text-red-500'>Sanity.io</span>
               </h2>
-              <p className='mt-4 text-lg !text-zinc-500'>
-                The only easier way to manage your content is to pay someone to
-                do it for you! This content management system can be completely
-                customized to suit your needs. The most common use-case would be
-                a blogging service, but it can also store content like this
-                paragraph, allowing you to change it at any time.
+              <p className='mt-4 max-w-2xl mx-auto text-lg !text-zinc-500'>
+                This content management system can be completely customized to
+                suit your needs. The most common use-case would be a blogging
+                service, but it can also store content like this paragraph,
+                allowing you to change it at any time. Extrapolate that enough
+                and you could have an entire website builder!
               </p>
             </div>
             <dl className='mt-12 space-y-10 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 lg:grid-cols-4 lg:gap-x-8'>
@@ -96,12 +95,11 @@ const ContentManagementPage: NextPage = () => {
                 </div>
               ))}
             </dl>
-          </div>
-        </div>
+          </section>
+        </article>
 
-        <div className='py-16'>
-          {/* Header */}
-          <div className='relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <article className='py-16'>
+          <section className='relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
             <h2 className='text-2xl font-semibold tracking-tight text-white md:text-3xl lg:text-4xl'>
               Content management service
             </h2>
@@ -115,29 +113,19 @@ const ContentManagementPage: NextPage = () => {
               packages with your website, you receive unlimited content updates
               for one monthly payment.
             </p>
+          </section>
+          <section className='mt-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
             <h3 className='mt-8 text-xl font-semibold !text-zinc-100'>
-              Want to learn more?
-            </h3>
-            <Link href='/contact'>
-              <a className='mt-4 text-white bg-primary-600 border border-transparent rounded-md shadow px-5 py-3 inline-flex items-center text-base font-medium hover:bg-primary-500 transition'>
-                Contact us now
-              </a>
-            </Link>
-          </div>
-
-          {/* Overlapping cards */}
-          <section className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-            <h3 className='mt-8 text-xl font-semibold !text-zinc-100'>
-              Included bundled services
+              Explore bundled services
             </h3>
             <div className='mt-12 grid grid-cols-1 gap-y-20 lg:grid-cols-3 lg:gap-y-0 lg:gap-x-8'>
-              {supportLinks.map((link) => (
+              {bundledServices.map((link) => (
                 <div
                   key={link.name}
                   className='flex flex-col bg-zinc-900 rounded-2xl shadow-xl'
                 >
                   <div className='flex-1 relative pt-16 px-6 pb-8 md:px-8'>
-                    <div className='absolute top-0 p-5 inline-block bg-indigo-600 rounded-xl shadow-lg transform -translate-y-1/2'>
+                    <div className='absolute top-0 p-5 inline-block bg-primary-600 rounded-xl shadow-lg transform -translate-y-1/2'>
                       <link.icon
                         className='h-6 w-6 text-white'
                         aria-hidden='true'
@@ -159,7 +147,25 @@ const ContentManagementPage: NextPage = () => {
               ))}
             </div>
           </section>
-        </div>
+        </article>
+        <section className='bg-primary-300'>
+          <div className='max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-24 lg:px-8 lg:flex lg:items-center lg:justify-between'>
+            <h2 className='text-3xl font-extrabold tracking-tight text-gray-900 md:text-4xl'>
+              <span className='block'>Want more information?</span>
+              <span className='block text-primary-600'>Contact us today.</span>
+            </h2>
+            <div className='mt-8 flex lg:mt-0 lg:flex-shrink-0'>
+              <div className='inline-flex rounded-md shadow'>
+                <a
+                  href='/contact'
+                  className='inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700'
+                >
+                  Get started
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
     </div>
   );
