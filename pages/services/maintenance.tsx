@@ -1,9 +1,15 @@
 import { NextPage } from 'next';
 import Link from 'next/link';
-import { Header, Split, SplitContainer } from '../../src/components';
+import {
+  ContactFooter,
+  Header,
+  Seo,
+  Split,
+  SplitContainer,
+} from '../../src/components';
 import maintenanceImg from '../../public/images/maintenance.jpeg';
 import { FaServer } from '@react-icons/all-files/fa/FaServer';
-import { HiDocumentAdd } from '@react-icons/all-files/hi/HiDocumentAdd';
+import { BsGearFill } from '@react-icons/all-files/bs/BsGearFill';
 
 const bundledServices = [
   {
@@ -18,15 +24,20 @@ const bundledServices = [
     href: '/services/content-management',
     description:
       'Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate id malesuada non. Cras aliquet purus dui laoreet diam sed lacus, fames.',
-    icon: HiDocumentAdd,
+    icon: BsGearFill,
   },
 ];
 
 const MaintenancePage: NextPage = () => {
   return (
     <div>
+      <Seo
+        title='Web design and maintenance in Toledo | Keplux Development'
+        description='When you design and host a site with us, we can also handle project maintenance. Offloading this work will be a weight off your shoulders. Call (567) 340-0015'
+        url='https://www.keplux.com/services/maintenance'
+      />
       <Header
-        page='Maintenance'
+        subtitle='Maintenance'
         title='Make sure your site is always updated to help keep your data safe'
         description='Technology advances fast, and updates are necessary to help mitigate online threats. Sometimes they are small, sometimes they are critical. We make sure your site is secure.'
       />
@@ -61,17 +72,16 @@ const MaintenancePage: NextPage = () => {
                 <h3 className='text-zinc-100 text-xl font-semibold'>
                   Contact us and add maintenance to your package.
                 </h3>
-                <a
-                  href='#'
-                  className='mt-4 text-white bg-primary-600 border border-transparent rounded-md shadow px-5 py-3 inline-flex items-center text-base font-medium hover:bg-primary-500 transition'
-                >
-                  Get in touch
-                </a>
+                <Link href='/contact'>
+                  <a className='mt-4 text-white bg-primary-600 border border-transparent rounded-md shadow px-5 py-3 inline-flex items-center text-base font-medium hover:bg-primary-500 transition'>
+                    Get in touch
+                  </a>
+                </Link>
               </div>
             </Split.Body>
           </Split>
         </SplitContainer>
-        <article className='py-16'>
+        <article className='pt-16 lg:pt-24'>
           <section className='mt-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
             <h3 className='mt-8 text-xl font-semibold !text-zinc-100'>
               Explore bundled services
@@ -92,14 +102,13 @@ const MaintenancePage: NextPage = () => {
                     <h4 className='text-xl font-medium text-zinc-100'>
                       {link.name}
                     </h4>
-                    <p className='mt-4 text-base text-zinc-500'>
-                      {link.description}
-                    </p>
                   </div>
                   <div className='px-6 py-4 bg-zinc-800 rounded-bl-2xl rounded-br-2xl md:px-8'>
-                    <a href={link.href} className='inline-link'>
-                      Learn more<span aria-hidden='true'> &rarr;</span>
-                    </a>
+                    <Link href={link.href}>
+                      <a href={link.href} className='inline-link'>
+                        Learn more<span aria-hidden='true'> &rarr;</span>
+                      </a>
+                    </Link>
                   </div>
                 </div>
               ))}
@@ -107,6 +116,8 @@ const MaintenancePage: NextPage = () => {
           </section>
         </article>
       </main>
+
+      <ContactFooter />
     </div>
   );
 };

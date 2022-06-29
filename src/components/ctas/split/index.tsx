@@ -33,7 +33,7 @@ type SplitProps = {
 
 export const SplitContainer = ({ children }: { children: ReactNode }) => {
   return (
-    <article className='relative grid grid-cols-1 gap-24 pt-16 overflow-hidden'>
+    <article className='relative grid grid-cols-1 gap-24 mt-16 lg:mt-24 overflow-hidden'>
       {children}
     </article>
   );

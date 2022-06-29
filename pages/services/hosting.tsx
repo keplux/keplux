@@ -1,11 +1,17 @@
 import { NextPage } from 'next';
 import Link from 'next/link';
 
-import { Header, Split, SplitContainer } from '../../src/components';
+import {
+  ContactFooter,
+  Header,
+  Seo,
+  Split,
+  SplitContainer,
+} from '../../src/components';
 
 import hostingImg from '../../public/images/hosting.jpeg';
 
-import { HiDocumentAdd } from '@react-icons/all-files/hi/HiDocumentAdd';
+import { BsGearFill } from '@react-icons/all-files/bs/BsGearFill';
 import { FaTools } from '@react-icons/all-files/fa/FaTools';
 import { FaServer } from '@react-icons/all-files/fa/FaServer';
 import { SiServerless } from '@react-icons/all-files/si/SiServerless';
@@ -13,7 +19,6 @@ import { FaImage } from '@react-icons/all-files/fa/FaImage';
 import { ImCloudUpload } from '@react-icons/all-files/im/ImCloudUpload';
 import { FaLock } from '@react-icons/all-files/fa/FaLock';
 import { BsFillShieldLockFill } from '@react-icons/all-files/bs/BsFillShieldLockFill';
-
 
 const features = [
   {
@@ -54,7 +59,7 @@ const bundledServices = [
     href: '/services/content-management',
     description:
       'Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate id malesuada non. Cras aliquet purus dui laoreet diam sed lacus, fames.',
-    icon: HiDocumentAdd,
+    icon: BsGearFill,
   },
   {
     name: 'Maintenance',
@@ -68,8 +73,13 @@ const bundledServices = [
 const HostingPage: NextPage = () => {
   return (
     <div>
+      <Seo
+        title='Scalable web hosting in Toledo | Keplux Development'
+        description="Hosting can be confusing. We can host your site for you so you don't have to worry about downtime or scalability pains. Interested? Call us today (567) 340-0015"
+        url='https://www.keplux.com/services/hosting'
+      />
       <Header
-        page='Hosting'
+        subtitle='Hosting'
         title='Get your site online with our hosting options'
         description='Yet another area with endless options, we can ease your hosting woes so you can grow your business without added stress.'
       />
@@ -160,20 +170,21 @@ const HostingPage: NextPage = () => {
                   <h4 className='text-xl font-medium text-zinc-100'>
                     {link.name}
                   </h4>
-                  <p className='mt-4 text-base text-zinc-500'>
-                    {link.description}
-                  </p>
                 </div>
                 <div className='px-6 py-4 bg-zinc-800 rounded-bl-2xl rounded-br-2xl md:px-8'>
-                  <a href={link.href} className='inline-link'>
-                    Learn more<span aria-hidden='true'> &rarr;</span>
-                  </a>
+                  <Link href={link.href}>
+                    <a href={link.href} className='inline-link'>
+                      Learn more<span aria-hidden='true'> &rarr;</span>
+                    </a>
+                  </Link>
                 </div>
               </div>
             ))}
           </div>
         </section>
       </main>
+
+      <ContactFooter />
     </div>
   );
 };

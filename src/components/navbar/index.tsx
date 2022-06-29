@@ -3,19 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Fragment } from 'react';
 import { Popover } from '@headlessui/react';
-import {
-  BookmarkAltIcon,
-  BriefcaseIcon,
-  DesktopComputerIcon,
-  GlobeAltIcon,
-  InformationCircleIcon,
-  MenuIcon,
-  NewspaperIcon,
-  OfficeBuildingIcon,
-  ShieldCheckIcon,
-  UserGroupIcon,
-  XIcon,
-} from '@heroicons/react/solid';
+import { MenuIcon, XIcon } from '@heroicons/react/solid';
 import { ChevronDownIcon } from '@heroicons/react/solid';
 
 import { FaPencilRuler } from '@react-icons/all-files/fa/FaPencilRuler';
@@ -27,7 +15,7 @@ import { MdPhoneIphone } from '@react-icons/all-files/md/MdPhoneIphone';
 import { SiGoogleanalytics } from '@react-icons/all-files/si/SiGoogleanalytics';
 import { MdSearch } from '@react-icons/all-files/md/MdSearch';
 import { MdShoppingCart } from '@react-icons/all-files/md/MdShoppingCart';
-import { HiDocumentAdd } from '@react-icons/all-files/hi/HiDocumentAdd';
+import { BsGearFill } from '@react-icons/all-files/bs/BsGearFill';
 
 import logo from '../../../public/logos/keplux-light-brand-transparent.png';
 import fullLogo from '../../../public/logos/keplux-light-transparent.png';
@@ -61,7 +49,7 @@ const solutions = [
     description:
       "Your website's content may need to be updated occasionally (or frequently). We work with you to determine the best way to handle how this is done.",
     href: '/services/content-management',
-    icon: HiDocumentAdd,
+    icon: BsGearFill,
   },
   {
     name: 'Hosting',
@@ -116,39 +104,6 @@ const callsToAction = [
   { name: 'View Our Work', href: '/projects', icon: MdWeb },
   { name: 'Contact Us', href: '/contact', icon: MdPhoneIphone },
 ];
-const company = [
-  { name: 'About', href: '#', icon: InformationCircleIcon },
-  { name: 'Customers', href: '#', icon: OfficeBuildingIcon },
-  { name: 'Press', href: '#', icon: NewspaperIcon },
-  { name: 'Careers', href: '#', icon: BriefcaseIcon },
-  { name: 'Privacy', href: '#', icon: ShieldCheckIcon },
-];
-const resources = [
-  { name: 'Community', href: '#', icon: UserGroupIcon },
-  { name: 'Partners', href: '#', icon: GlobeAltIcon },
-  { name: 'Guides', href: '#', icon: BookmarkAltIcon },
-  { name: 'Webinars', href: '#', icon: DesktopComputerIcon },
-];
-const blogPosts = [
-  {
-    id: 1,
-    name: 'Boost your conversion rate',
-    href: '#',
-    preview:
-      'Eget ullamcorper ac ut vulputate fames nec mattis pellentesque elementum. Viverra tempor id mus.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1558478551-1a378f63328e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2849&q=80',
-  },
-  {
-    id: 2,
-    name: 'How to use search engine optimization to drive traffic to your site',
-    href: '#',
-    preview:
-      'Eget ullamcorper ac ut vulputate fames nec mattis pellentesque elementum. Viverra tempor id mus.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2300&q=80',
-  },
-];
 
 export const Navbar = () => {
   return (
@@ -182,6 +137,9 @@ export const Navbar = () => {
           </div>
           <div className='hidden md:flex-1 md:flex md:items-center md:justify-between'>
             <Popover.Group as='nav' className='flex items-center space-x-10'>
+              <Link href='/'>
+                <a className='link'>Home</a>
+              </Link>
               <Popover>
                 {({ open }) => (
                   <>
@@ -195,7 +153,7 @@ export const Navbar = () => {
                       <ChevronDownIcon
                         className={classNames(
                           open ? '!text-primary-300' : '',
-                          'link ml-2 h-5 w-5 group-hover:text-primary-300'
+                          'link ml-0 h-5 w-5 group-hover:text-primary-300'
                         )}
                         aria-hidden='true'
                       />
@@ -251,16 +209,18 @@ export const Navbar = () => {
                           <div className='max-w-7xl mx-auto space-y-6 px-4 py-5 sm:flex sm:space-y-0 sm:space-x-10 sm:px-6 lg:px-8'>
                             {callsToAction.map((item) => (
                               <div key={item.name} className='flow-root'>
-                                <a
+                                <Popover.Button
+                                  as={HeadlessLink}
                                   href={item.href}
-                                  className='-m-3 p-3 flex items-center rounded-md text-primary-200 hover:bg-primary-600/25'
                                 >
-                                  <item.icon
-                                    className='flex-shrink-0 h-6 w-6 text-zinc-100'
-                                    aria-hidden='true'
-                                  />
-                                  <span className='ml-3'>{item.name}</span>
-                                </a>
+                                  <a className='-m-3 p-3 flex items-center rounded-md text-primary-200 hover:bg-primary-600/25'>
+                                    <item.icon
+                                      className='flex-shrink-0 h-6 w-6 text-zinc-100'
+                                      aria-hidden='true'
+                                    />
+                                    <span className='ml-3'>{item.name}</span>
+                                  </a>
+                                </Popover.Button>
                               </div>
                             ))}
                           </div>
@@ -273,20 +233,17 @@ export const Navbar = () => {
               <Link href='/projects'>
                 <a className='link'>Projects</a>
               </Link>
-              <Link href='/pricing'>
-                <a className='link'>Pricing</a>
-              </Link>
               <Link href='/contact'>
                 <a className='link'>Contact</a>
               </Link>
             </Popover.Group>
             <div className='flex items-center md:ml-12'>
-              <a
-                href='#'
-                className='ml-8 inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-primary-600 hover:bg-primary-700 transition'
+              <button
+                disabled
+                className='inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-primary-600 hover:bg-primary-700 disabled:bg-zinc-600 cursor-not-allowed transition'
               >
                 Client Login
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -325,11 +282,15 @@ export const Navbar = () => {
               <div className='mt-4 grid grid-cols-2 gap-4'>
                 {mobileNav.map((item) => {
                   return (
-                    <Link key={item.label} href={item.href}>
+                    <Popover.Button
+                      as={HeadlessLink}
+                      key={item.label}
+                      href={item.href}
+                    >
                       <a className='rounded-md !text-lg !capitalize font-medium link'>
                         {item.label}
                       </a>
-                    </Link>
+                    </Popover.Button>
                   );
                 })}
               </div>
@@ -350,28 +311,17 @@ export const Navbar = () => {
                 <nav>
                   <div className='grid gap-7 sm:grid-cols-2 sm:gap-y-8 sm:gap-x-4'>
                     {solutions.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className='-m-3 flex items-center p-3 rounded-lg hover:bg-primary-900/25 transition'
-                      >
-                        <div className='flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-primary-500 text-white sm:h-12 sm:w-12'>
-                          <item.icon className='h-6 w-6' aria-hidden='true' />
-                        </div>
-                        <div className='ml-4 text-zinc-100 font-normal'>
-                          {item.name}
-                        </div>
-                      </a>
+                      <Link key={item.name} href={item.href}>
+                        <a className='-m-3 flex items-center p-3 rounded-lg hover:bg-primary-900/25 transition'>
+                          <div className='flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-primary-500 text-white sm:h-12 sm:w-12'>
+                            <item.icon className='h-6 w-6' aria-hidden='true' />
+                          </div>
+                          <div className='ml-4 text-zinc-100 font-normal'>
+                            {item.name}
+                          </div>
+                        </a>
+                      </Link>
                     ))}
-                  </div>
-                  <div className='mt-8 text-base'>
-                    <a
-                      href='#'
-                      className='font-medium text-primary-600 hover:text-primary-500'
-                    >
-                      {' '}
-                      View all products <span aria-hidden='true'>&rarr;</span>
-                    </a>
                   </div>
                 </nav>
               </div>

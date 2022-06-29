@@ -203,6 +203,7 @@ const Modal = ({
 export const ContactForm = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const initialValues: {
     firstName: string;
@@ -245,6 +246,8 @@ export const ContactForm = () => {
       validationSchema={validationSchema}
       onSubmit={async (values, actions) => {
         actions.setSubmitting(true);
+        setIsSubmitting(true);
+
         const res = await fetch('/api/submitContactForm', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -261,12 +264,13 @@ export const ContactForm = () => {
 
         // If submission is successful, reset form state and data
         if (data.message === 'success') {
-          actions.setSubmitting(false);
           actions.resetForm();
           setSuccess(true);
         } else {
           setSuccess(false);
         }
+        actions.setSubmitting(false);
+        setIsSubmitting(false);
         setModalOpen(true);
       }}
     >
@@ -303,7 +307,7 @@ export const ContactForm = () => {
         <div className='-mt-6 col-span-2 text-right'>
           <button
             type='submit'
-            // disabled={isSubmitting}
+            disabled={isSubmitting}
             className='mt-4 text-white bg-primary-600 border border-transparent rounded-md shadow px-5 py-3 inline-flex items-center text-base font-medium hover:bg-primary-500 transition disabled:bg-gray-400'
           >
             Send

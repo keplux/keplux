@@ -1,11 +1,14 @@
 import { NextPage } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
-import { Header } from '../../src/components';
+import {
+  ContactFooter,
+  Header,
+  Seo,
+  Split,
+  SplitContainer,
+} from '../../src/components';
 
 import designImg from '../../public/images/design.jpeg';
-
-import { classNames } from '../../utils/classNames';
 
 const process = [
   {
@@ -43,52 +46,58 @@ const process = [
 const DesignPage: NextPage = () => {
   return (
     <div>
+      <Seo
+        title='The best web design services in Toledo | Keplux Development'
+        description='We build our websites with modern-looking components that can be customized to fit your business or we can create them from scratch. Call today (567) 340-0015'
+        url='https://www.keplux.com/services/design'
+      />
       <Header
-        page='Design'
+        subtitle='Design'
         title='Professional web design'
         description='We build our websites with modern-looking components that can be customized to fit your business or we can create them from scratch.'
       />
       <main>
-        <article>
-          <div className='max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8'>
-            <div className='bg-primary-800 rounded-lg shadow-xl overflow-hidden lg:grid lg:grid-cols-2 lg:gap-4'>
-              <div className='pt-10 pb-12 px-6 sm:pt-16 sm:px-16 lg:py-16 lg:pr-0 xl:py-20 xl:px-20'>
-                <section className='lg:self-center'>
-                  <h2 className='text-3xl font-semibold text-white sm:text-4xl'>
-                    <span className='block'>Bringing your own design?</span>
-                    <span className='block'>Let&apos;s get started!</span>
-                  </h2>
-                  <p className='mt-4 text-lg leading-6 !text-primary-200'>
-                    We work with you every step of the way, ensuring you&apos;re
-                    happy with the final result.
-                  </p>
-                  <Link href='/contact'>
-                    <a className='mt-8 bg-white border border-transparent rounded-md shadow px-5 py-3 inline-flex items-center text-base font-medium text-primary-600 hover:bg-primary-50'>
-                      Get started now
-                    </a>
-                  </Link>
-                </section>
+        <SplitContainer>
+          <Split
+            contentPosition='right'
+            imgSrc={designImg}
+            imgAlt='A person is whiteboarding a wireframe of a website.'
+          >
+            <Split.Header>Bringing your own design?</Split.Header>
+            <Split.Body>
+              <p>
+                Great! We can apply our custom{' '}
+                <Link href='/services/development'>
+                  <a className='inline-link'>development process</a>
+                </Link>{' '}
+                to any design. We&apos;ll work with you to hammer down
+                specifics, but can skip the majority of this part of the
+                process.
+              </p>
+              <div className='mt-6'>
+                <h3 className='text-zinc-100 text-xl font-semibold'>
+                  Ready to get started?
+                </h3>
+                <Link href='https://developers.google.com/search/docs/beginner/seo-starter-guide'>
+                  <a className=' mt-4 text-white bg-primary-600 border border-transparent rounded-md shadow px-5 py-3 inline-flex items-center text-base font-medium hover:bg-primary-500 transition'>
+                    Get started now
+                  </a>
+                </Link>
               </div>
-              <aside className='-mt-6 aspect-w-5 aspect-h-3 md:aspect-w-2 md:aspect-h-1'>
-                <div className='relative transform translate-x-6 translate-y-6 w-full h-full rounded-md overflow-hidden object-cover object-left-top sm:translate-x-16 lg:translate-y-20'>
-                  <Image src={designImg} alt='App screenshot' />
-                </div>
-              </aside>
-            </div>
-          </div>
-        </article>
+            </Split.Body>
+          </Split>
+        </SplitContainer>
 
         <article>
-          <div className='max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-20 lg:px-8'>
+          <div className='max-w-7xl mx-auto pt-16 px-4 sm:px-6 lg:pt-24 lg:px-8'>
             <div className='lg:grid lg:grid-cols-3 lg:gap-8'>
               <aside>
                 <h2 className='text-3xl font-normal'>
-                  Here&apos;s What to Expect
+                  Here&apos;s what to expect when starting a project with us
                 </h2>
                 <p className='mt-4 text-lg'>
-                  Just so you aren&apos;t caught off guard, here&apos;s the
-                  process you should expect. It&apos;s easy and helps us create
-                  a website you will be happy with before we begin the{' '}
+                  It&apos;s easy and helps us create a website you will be happy
+                  with before we begin the{' '}
                   <Link href='/services/development'>
                     <a className='inline-link'>development phase</a>
                   </Link>
@@ -111,6 +120,8 @@ const DesignPage: NextPage = () => {
           </div>
         </article>
       </main>
+
+      <ContactFooter />
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import Image from 'next/image';
-import { Header, Split, SplitContainer } from '../../src/components';
+import { ContactFooter, Header, Seo, Split, SplitContainer } from '../../src/components';
 import Link from 'next/link';
 
 import ecommerceImg from '../../public/images/ecommerce.jpg';
@@ -10,13 +10,18 @@ import productImg from '../../public/images/ecommerce-product-details.jpg';
 const eCommercePage: NextPage = () => {
   return (
     <div>
+      <Seo
+        title='The best custom e-commerce solutions | Keplux Development'
+        description='Our headless e-commerce solutions result in faster, more customizable, and highly scalable e-commerce sites than typical solutions offered by agencies.'
+        url='https://www.keplux.com/services/e-commerce'
+      />
       <Header
-        page='E-Commerce'
+        subtitle='E-Commerce'
         title='Need an online store for your business?'
         description='We can implement a variety of e-commerce solutions and tailor them to your needs.'
       />
       <main>
-        <article className='bg-white relative text-center max-w-8xl w-full'>
+        <article className='mt-16 lg:mt-24 bg-white relative text-center max-w-8xl w-full'>
           <div className='absolute -inset-0 h-1/3 lg:h-1/2 bg-[#111111]' />
           <div className='mx-4'>
             <div className='relative max-w-6xl mx-auto z-10 shadow-xl rounded-md overflow-hidden'>
@@ -102,24 +107,7 @@ const eCommercePage: NextPage = () => {
           </Split>
         </SplitContainer>
 
-        <section className='bg-primary-300'>
-          <div className='max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-24 lg:px-8 lg:flex lg:items-center lg:justify-between'>
-            <h2 className='text-3xl font-extrabold tracking-tight text-zinc-900 md:text-4xl'>
-              <span className='block'>Want more information?</span>
-              <span className='block text-primary-600'>Contact us today.</span>
-            </h2>
-            <div className='mt-8 flex lg:mt-0 lg:flex-shrink-0'>
-              <div className='inline-flex rounded-md shadow'>
-                <a
-                  href='/contact'
-                  className='inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700'
-                >
-                  Get started
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
+        <ContactFooter />
       </main>
     </div>
   );
