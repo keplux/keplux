@@ -1,16 +1,22 @@
 import { NextPage } from 'next';
-import { Header, Split, SplitContainer } from '../../src/components';
+import { ContactFooter, Header, Seo, Split, SplitContainer } from '../../src/components';
 import { MdSearch } from '@react-icons/all-files/md/MdSearch';
 import { FaExternalLinkAlt } from '@react-icons/all-files/fa/FaExternalLinkAlt';
 import { FaWheelchair } from '@react-icons/all-files/fa/FaWheelchair';
 import seoImg from '../../public/images/seo.png';
 import accessibilityImg from '../../public/images/accessibility.png';
+import Link from 'next/link';
 
 const SeoPage: NextPage = () => {
   return (
     <div>
+      <Seo
+        title='Search engine optimation in Toledo | Keplux Development'
+        description='Good SEO can get your business ranked higher on search engines. SEO is crucial for helping your business succeed. It can be difficult, so let us do it for you!'
+        url='https://www.keplux.com/services/seo'
+      />
       <Header
-        page='SEO and Accessibility'
+        subtitle='SEO and Accessibility'
         title='Rank higher on search engines while expanding access to your site'
         description='A lot of factors determine how high your site ranks on search engines. We work to understand your business and goals to help you rank higher. We also ensure your site is accessible to everyone.'
       />
@@ -100,24 +106,8 @@ const SeoPage: NextPage = () => {
             </Split.Body>
           </Split>
         </SplitContainer>
-        <section className='bg-white'>
-          <div className='max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-24 lg:px-8 lg:flex lg:items-center lg:justify-between'>
-            <h2 className='text-3xl font-extrabold tracking-tight text-zinc-900 md:text-4xl'>
-              <span className='block'>Ready to get started?</span>
-              <span className='block text-primary-600'>Contact us today.</span>
-            </h2>
-            <div className='mt-8 flex lg:mt-0 lg:flex-shrink-0'>
-              <div className='inline-flex rounded-md shadow'>
-                <a
-                  href='/contact'
-                  className='inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700'
-                >
-                  Get started
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
+        
+        <ContactFooter />
       </main>
     </div>
   );

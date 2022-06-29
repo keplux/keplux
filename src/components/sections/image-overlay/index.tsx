@@ -25,7 +25,7 @@ export const ImageOverlayContent = ({
   children,
 }: ImageOverlayContentProps) => {
   return (
-    <article className='bg-white relative'>
+    <article className='mt-16 lg:mt-24 bg-white relative'>
       <div className='absolute -inset-0 h-1/3 lg:h-1/2 bg-[#111111]' />
       <div className='mx-4'>
         <div className='relative max-w-6xl mx-auto w-full z-10 shadow-xl rounded-b-3xl'>

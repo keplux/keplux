@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import Image from 'next/image';
-import { Header, Split, SplitContainer } from '../../src/components';
+import { Header, Seo, Split, SplitContainer } from '../../src/components';
 
 import vercelLogo from '../../public/images/technology-logos/vercel-logo.svg';
 import nextjsLogo from '../../public/images/technology-logos/nextjs-logo.png';
@@ -14,14 +14,18 @@ import developmentImg from '../../public/images/development.png';
 import sanityStudio from '../../public/images/sanity-studio.png';
 import store from '../../public/images/ecommerce.jpg';
 
-import { classNames } from '../../utils/classNames';
 import Link from 'next/link';
 
 const DevelopmentPage: NextPage = () => {
   return (
     <div>
+      <Seo
+        title='Custom web design and development | Keplux Development'
+        description='With modern technology, our websites are much faster, more accessible, and more search engine friendly than our competitors. Really. Call today (567) 340-0015'
+        url='https://www.keplux.com/services/development'
+      />
       <Header
-        page='Development'
+        subtitle='Development'
         title='Modern web development'
         description='Utilizing modern tools, our websites are much faster, more accessible, and more search engine friendly than our competitors. Really.'
       />
@@ -60,12 +64,11 @@ const DevelopmentPage: NextPage = () => {
                 <h3 className='text-zinc-100 text-xl font-semibold'>
                   Join us in the modern digital age.
                 </h3>
-                <a
-                  href='#'
-                  className='mt-4 text-white bg-primary-600 border border-transparent rounded-md shadow px-5 py-3 inline-flex items-center text-base font-medium hover:bg-primary-500 transition'
-                >
-                  Get a free quote
-                </a>
+                <Link href='contact'>
+                  <a className='mt-4 text-white bg-primary-600 border border-transparent rounded-md shadow px-5 py-3 inline-flex items-center text-base font-medium hover:bg-primary-500 transition'>
+                    Get a free quote
+                  </a>
+                </Link>
               </div>
             </Split.Body>
           </Split>
@@ -138,18 +141,17 @@ const DevelopmentPage: NextPage = () => {
                 <h3 className='text-zinc-100 text-xl font-semibold'>
                   Need help setting up an online store?
                 </h3>
-                <a
-                  href='#'
-                  className='mt-4 text-white bg-primary-600 border border-transparent rounded-md shadow px-5 py-3 inline-flex items-center text-base font-medium hover:bg-primary-500 transition'
-                >
-                  Get a free quote
-                </a>
+                <Link href='/contact'>
+                  <a className='mt-4 text-white bg-primary-600 border border-transparent rounded-md shadow px-5 py-3 inline-flex items-center text-base font-medium hover:bg-primary-500 transition'>
+                    Get a free quote
+                  </a>
+                </Link>
               </div>
             </Split.Body>
           </Split>
         </SplitContainer>
 
-        <div className='bg-primary-800'>
+        <div className='mt-24 bg-primary-800'>
           <div className='max-w-7xl mx-auto py-16 px-4 sm:py-20 sm:px-6 lg:px-8'>
             <h2 className='text-3xl font-normal text-white'>
               Some tools we use, and recommend, are:

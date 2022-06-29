@@ -1,14 +1,20 @@
 import { NextPage } from 'next';
-import Image from 'next/image';
-import { Header, ImageOverlayContent } from '../../src/components';
+import { Header, ImageOverlayContent, Seo } from '../../src/components';
 import analyticsImg from '../../public/images/analytics.png';
 import { FaExternalLinkAlt } from '@react-icons/all-files/fa/FaExternalLinkAlt';
+import Link from 'next/link';
+import ContactFooter from '../../src/components/contact-footer/index';
 
 const AnalyticsPage: NextPage = () => {
   return (
     <div>
+      <Seo
+        title='Add Google Analytics to your website | Keplux Development'
+        description='See how users engage with the content on your site. These insights can improve marketing, saving you money and increasing leads. Add analytics to any site.'
+        url='https://www.keplux.com/services/analytics'
+      />
       <Header
-        page='Analytics'
+        subtitle='Analytics'
         title='Know how users interact with your site'
         description="Being able to see how users engage with the content on your site allows you to work out what does and doesn't work for marketing, saving you money and increasing leads."
       />
@@ -21,7 +27,7 @@ const AnalyticsPage: NextPage = () => {
             Website analytics provided by Google Analytics
           </ImageOverlayContent.Header>
           <ImageOverlayContent.Body>
-            <p className='mt-4 max-w-6xl mx-auto'>
+            <div className='mt-4 max-w-6xl mx-auto'>
               <p className='max-w-2xl text-lg !text-zinc-500'>
                 We highly recommend adding analytics to your web package. We can
                 integrate it into your site for a one-time fee, but the service
@@ -40,28 +46,11 @@ const AnalyticsPage: NextPage = () => {
                 </a>
                 .
               </p>
-            </p>
+            </div>
           </ImageOverlayContent.Body>
         </ImageOverlayContent>
 
-        <section>
-          <div className='max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-24 lg:px-8 lg:flex lg:items-center lg:justify-between'>
-            <h2 className='text-3xl font-extrabold tracking-tight text-zinc-100 md:text-4xl'>
-              <span className='block'>Ready to get started?</span>
-              <span className='block text-primary-600'>Contact us today.</span>
-            </h2>
-            <div className='mt-8 flex lg:mt-0 lg:flex-shrink-0'>
-              <div className='inline-flex rounded-md shadow'>
-                <a
-                  href='/contact'
-                  className='inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700'
-                >
-                  Get started
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
+        <ContactFooter />
       </main>
     </div>
   );

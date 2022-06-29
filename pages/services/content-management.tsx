@@ -1,11 +1,12 @@
 import { NextPage } from 'next';
-import Image from 'next/image';
-import { Header, ImageOverlayContent } from '../../src/components';
+import { Header, ImageOverlayContent, Seo } from '../../src/components';
 import sanityStudio from '../../public/images/sanity-studio.png';
 import { CheckIcon } from '@heroicons/react/outline';
 
 import { FaServer } from '@react-icons/all-files/fa/FaServer';
 import { FaTools } from '@react-icons/all-files/fa/FaTools';
+import ContactFooter from '../../src/components/contact-footer/index';
+import Link from 'next/link';
 
 const features = [
   {
@@ -33,15 +34,11 @@ const bundledServices = [
   {
     name: 'Hosting',
     href: '/services/hosting',
-    description:
-      'Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate id malesuada non. Cras aliquet purus dui laoreet diam sed lacus, fames.',
     icon: FaServer,
   },
   {
     name: 'Maintenance',
     href: '/services/maintenance',
-    description:
-      'Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate id malesuada non. Cras aliquet purus dui laoreet diam sed lacus, fames.',
     icon: FaTools,
   },
 ];
@@ -49,8 +46,13 @@ const bundledServices = [
 const ContentManagementPage: NextPage = () => {
   return (
     <div>
+      <Seo
+        title='Content management services for your site in Toledo, OH'
+        description="Making content changes on your website shouldn't be a burden. We make it easy and intuitive, or we can be retained to do it for you. Call today (567) 340-0015"
+        url='https://www.keplux.com/services/content-management'
+      />
       <Header
-        page='Content Management'
+        subtitle='Content Management'
         title='Managing your content just got easier'
         description="Making content changes on your website shouldn't be a burden. We make it easy and intuitive, or we can be retained to do it for you."
       />
@@ -63,7 +65,7 @@ const ContentManagementPage: NextPage = () => {
             Fully-customizable content management system with Sanity.io
           </ImageOverlayContent.Header>
           <ImageOverlayContent.Body>
-            <p className='mt-4 max-w-6xl mx-auto'>
+            <div className='mt-4 max-w-6xl mx-auto'>
               <p className='max-w-2xl text-lg !text-zinc-500'>
                 This content management system can be completely customized to
                 suit your needs. The most common use-case would be a blogging
@@ -71,7 +73,7 @@ const ContentManagementPage: NextPage = () => {
                 allowing you to change it at any time. Extrapolate that enough
                 and you could have an entire website builder!
               </p>
-            </p>
+            </div>
             <dl className='mt-12 space-y-10 max-w-7xl mx-auto sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 lg:grid-cols-4 lg:gap-x-8'>
               {features.map((feature) => (
                 <div key={feature.name} className='relative'>
@@ -84,16 +86,13 @@ const ContentManagementPage: NextPage = () => {
                       {feature.name}
                     </p>
                   </dt>
-                  <dd className='mt-2 ml-9 text-left text-zinc-600'>
-                    {feature.description}
-                  </dd>
                 </div>
               ))}
             </dl>
           </ImageOverlayContent.Body>
         </ImageOverlayContent>
 
-        <article className='py-16'>
+        <article className='pt-16 lg:pt-24'>
           <section className='relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
             <h2 className='text-2xl font-semibold tracking-tight text-white md:text-3xl lg:text-4xl'>
               Content management service
@@ -129,38 +128,21 @@ const ContentManagementPage: NextPage = () => {
                     <h4 className='text-xl font-medium text-zinc-100'>
                       {link.name}
                     </h4>
-                    <p className='mt-4 text-base text-zinc-500'>
-                      {link.description}
-                    </p>
                   </div>
                   <div className='px-6 py-4 bg-zinc-800 rounded-bl-2xl rounded-br-2xl md:px-8'>
-                    <a href={link.href} className='inline-link'>
-                      Learn more<span aria-hidden='true'> &rarr;</span>
-                    </a>
+                    <Link href={link.href}>
+                      <a href={link.href} className='inline-link'>
+                        Learn more<span aria-hidden='true'> &rarr;</span>
+                      </a>
+                    </Link>
                   </div>
                 </div>
               ))}
             </div>
           </section>
         </article>
-        <section className='bg-primary-300'>
-          <div className='max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-24 lg:px-8 lg:flex lg:items-center lg:justify-between'>
-            <h2 className='text-3xl font-extrabold tracking-tight text-zinc-900 md:text-4xl'>
-              <span className='block'>Want more information?</span>
-              <span className='block text-primary-600'>Contact us today.</span>
-            </h2>
-            <div className='mt-8 flex lg:mt-0 lg:flex-shrink-0'>
-              <div className='inline-flex rounded-md shadow'>
-                <a
-                  href='/contact'
-                  className='inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700'
-                >
-                  Get started
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
+
+        <ContactFooter />
       </main>
     </div>
   );
