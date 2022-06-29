@@ -36,33 +36,33 @@ const Home: NextPage = () => {
             <div className='relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
               <div className='max-w-4xl mx-auto'>
                 <dl className='rounded-t-lg bg-white shadow-lg sm:grid sm:grid-cols-3'>
-                  <div className='flex flex-col border-b border-gray-100 p-6 text-center sm:border-0 sm:border-r'>
-                    <dt className='order-2 mt-2 text-lg leading-6 font-medium text-gray-500'>
+                  <div className='flex flex-col border-b border-zinc-100 p-6 text-center sm:border-0 sm:border-r'>
+                    <dt className='order-2 mt-2 text-lg leading-6 font-medium text-zinc-500'>
                       to have the highest impact on conversion rates
                     </dt>
-                    <dd className='order-1 text-5xl font-extrabold text-indigo-600'>
+                    <dd className='order-1 text-5xl font-extrabold text-primary-600'>
                       5s
                     </dd>
                   </div>
-                  <div className='flex flex-col border-b border-gray-100 p-6 text-center sm:border-0 sm:border-r'>
-                    <dt className='order-2 mt-2 text-lg leading-6 font-medium text-gray-500'>
+                  <div className='flex flex-col border-b border-zinc-100 p-6 text-center sm:border-0 sm:border-r'>
+                    <dt className='order-2 mt-2 text-lg leading-6 font-medium text-zinc-500'>
                       conversion rate drop per second within the first five
                       seconds of load time
                     </dt>
-                    <dd className='order-1 text-5xl font-extrabold text-indigo-600'>
+                    <dd className='order-1 text-5xl font-extrabold text-primary-600'>
                       4.42%
                     </dd>
                   </div>
-                  <div className='flex flex-col border-t border-gray-100 p-6 text-center sm:border-0 sm:border-l'>
-                    <dt className='order-2 mt-2 text-lg leading-6 font-medium text-gray-500'>
+                  <div className='flex flex-col border-t border-zinc-100 p-6 text-center sm:border-0 sm:border-l'>
+                    <dt className='order-2 mt-2 text-lg leading-6 font-medium text-zinc-500'>
                       The average mobile page takes 15.3 seconds to load
                     </dt>
-                    <dd className='order-1 text-5xl font-extrabold text-indigo-600'>
+                    <dd className='order-1 text-5xl font-extrabold text-primary-600'>
                       15.3s
                     </dd>
                   </div>
                 </dl>
-                <p className='bg-white m-0 rounded-b-xl p-2 text-xs italic border-t border-gray-100'>
+                <p className='bg-white m-0 rounded-b-xl p-2 text-xs italic border-t border-zinc-100'>
                   Source:{' '}
                   <a
                     href='https://blog.hubspot.com/marketing/page-load-time-conversion-rates'

@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import Image from 'next/image';
-import { Header } from '../../src/components';
+import { Header, ImageOverlayContent } from '../../src/components';
 import sanityStudio from '../../public/images/sanity-studio.png';
 import { CheckIcon } from '@heroicons/react/outline';
 
@@ -55,29 +55,24 @@ const ContentManagementPage: NextPage = () => {
         description="Making content changes on your website shouldn't be a burden. We make it easy and intuitive, or we can be retained to do it for you."
       />
       <main>
-        <article className='bg-white relative text-center max-w-8xl w-full'>
-          <div className='absolute -inset-0 h-1/3 lg:h-1/2 bg-[#111111]' />
-          <div className='relative z-10 mx-4 shadow-xl inline-block rounded-b-lg'>
-            <Image
-              src={sanityStudio}
-              alt='Content management with Sanity Studio'
-            />
-          </div>
-          <section className='bg-white relative max-w-7xl mx-auto -mt-8 pt-24 pb-16 px-4 sm:px-6 lg:py-24 lg:px-8'>
-            <div className='max-w-5xl mx-auto text-center'>
-              <h2 className='text-5xl font-semibold text-zinc-900'>
-                Fully-customizable content management system with{' '}
-                <span className='text-red-500'>Sanity.io</span>
-              </h2>
-              <p className='mt-4 max-w-2xl mx-auto text-lg !text-zinc-500'>
+        <ImageOverlayContent
+          imgSrc={sanityStudio}
+          imgAlt='Screenshot of content management in Sanity Studio.'
+        >
+          <ImageOverlayContent.Header>
+            Fully-customizable content management system with Sanity.io
+          </ImageOverlayContent.Header>
+          <ImageOverlayContent.Body>
+            <p className='mt-4 max-w-6xl mx-auto'>
+              <p className='max-w-2xl text-lg !text-zinc-500'>
                 This content management system can be completely customized to
                 suit your needs. The most common use-case would be a blogging
                 service, but it can also store content like this paragraph,
                 allowing you to change it at any time. Extrapolate that enough
                 and you could have an entire website builder!
               </p>
-            </div>
-            <dl className='mt-12 space-y-10 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 lg:grid-cols-4 lg:gap-x-8'>
+            </p>
+            <dl className='mt-12 space-y-10 max-w-7xl mx-auto sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 lg:grid-cols-4 lg:gap-x-8'>
               {features.map((feature) => (
                 <div key={feature.name} className='relative'>
                   <dt>
@@ -95,8 +90,8 @@ const ContentManagementPage: NextPage = () => {
                 </div>
               ))}
             </dl>
-          </section>
-        </article>
+          </ImageOverlayContent.Body>
+        </ImageOverlayContent>
 
         <article className='py-16'>
           <section className='relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
@@ -134,7 +129,7 @@ const ContentManagementPage: NextPage = () => {
                     <h4 className='text-xl font-medium text-zinc-100'>
                       {link.name}
                     </h4>
-                    <p className='mt-4 text-base text-gray-500'>
+                    <p className='mt-4 text-base text-zinc-500'>
                       {link.description}
                     </p>
                   </div>
@@ -150,7 +145,7 @@ const ContentManagementPage: NextPage = () => {
         </article>
         <section className='bg-primary-300'>
           <div className='max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-24 lg:px-8 lg:flex lg:items-center lg:justify-between'>
-            <h2 className='text-3xl font-extrabold tracking-tight text-gray-900 md:text-4xl'>
+            <h2 className='text-3xl font-extrabold tracking-tight text-zinc-900 md:text-4xl'>
               <span className='block'>Want more information?</span>
               <span className='block text-primary-600'>Contact us today.</span>
             </h2>

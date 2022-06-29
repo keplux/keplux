@@ -175,7 +175,7 @@ export const Navbar = () => {
             </Link>
           </div>
           <div className='-mr-2 -my-2 md:hidden'>
-            <Popover.Button className='rounded-md p-2 inline-flex items-center justify-center text-zinc-400 hover:text-zinc-500 hover:bg-zinc-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500'>
+            <Popover.Button className='rounded-md p-2 inline-flex items-center justify-center text-zinc-400 hover:text-zinc-500 hover:bg-zinc-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500'>
               <span className='sr-only'>Open menu</span>
               <MenuIcon className='h-6 w-6' aria-hidden='true' />
             </Popover.Button>
@@ -188,7 +188,7 @@ export const Navbar = () => {
                     <Popover.Button
                       className={classNames(
                         open ? '!text-primary-300' : '',
-                        'group link rounded-md inline-flex items-center focus:outline-none focus:ring-2 focus:ring-indigo-500'
+                        'group link rounded-md flex items-center focus:outline-none focus:ring-2 focus:ring-primary-500'
                       )}
                     >
                       <span>Solutions</span>
@@ -221,7 +221,7 @@ export const Navbar = () => {
                               <a className='-m-3 p-3 flex flex-col justify-between rounded-lg hover:bg-primary-900/25 sm:transition'>
                                 <div className='flex md:h-full lg:flex-col'>
                                   <div className='flex-shrink-0'>
-                                    <span className='inline-flex items-center justify-center h-10 w-10 rounded-md bg-indigo-600 text-white sm:h-12 sm:w-12'>
+                                    <span className='inline-flex items-center justify-center h-10 w-10 rounded-md bg-primary-600 text-white sm:h-12 sm:w-12'>
                                       <item.icon
                                         className='h-6 w-6'
                                         aria-hidden='true'
@@ -237,7 +237,7 @@ export const Navbar = () => {
                                         {item.description}
                                       </p>
                                     </div>
-                                    <p className='mt-2 text-sm font-normal !text-indigo-300 lg:mt-4'>
+                                    <p className='mt-2 text-sm font-normal !text-primary-300 lg:mt-4'>
                                       Learn more{' '}
                                       <span aria-hidden='true'>&rarr;</span>
                                     </p>
@@ -253,7 +253,7 @@ export const Navbar = () => {
                               <div key={item.name} className='flow-root'>
                                 <a
                                   href={item.href}
-                                  className='-m-3 p-3 flex items-center rounded-md text-indigo-200 hover:bg-primary-600/25'
+                                  className='-m-3 p-3 flex items-center rounded-md text-primary-200 hover:bg-primary-600/25'
                                 >
                                   <item.icon
                                     className='flex-shrink-0 h-6 w-6 text-zinc-100'
@@ -270,28 +270,22 @@ export const Navbar = () => {
                   </>
                 )}
               </Popover>
-              <a href='#' className='link'>
-                Projects
-              </a>
-              <a href='#' className='link'>
-                Pricing
-              </a>
-              <a href='#' className='link'>
-                Contact
-              </a>
+              <Link href='/projects'>
+                <a className='link'>Projects</a>
+              </Link>
+              <Link href='/pricing'>
+                <a className='link'>Pricing</a>
+              </Link>
+              <Link href='/contact'>
+                <a className='link'>Contact</a>
+              </Link>
             </Popover.Group>
             <div className='flex items-center md:ml-12'>
               <a
                 href='#'
-                className='text-base font-medium text-zinc-500 hover:text-zinc-900'
+                className='ml-8 inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-primary-600 hover:bg-primary-700 transition'
               >
-                Sign in
-              </a>
-              <a
-                href='#'
-                className='ml-8 inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700'
-              >
-                Sign up
+                Client Login
               </a>
             </div>
           </div>
@@ -322,7 +316,7 @@ export const Navbar = () => {
                   objectPosition='left'
                 />
                 <div className='-mr-2'>
-                  <Popover.Button className='bg-zinc-900 rounded-md p-2 inline-flex items-center justify-center text-primary-500 hover:text-primary-700 hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500'>
+                  <Popover.Button className='bg-zinc-900 rounded-md p-2 inline-flex items-center justify-center text-primary-500 hover:text-primary-700 hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500'>
                     <span className='sr-only'>Close menu</span>
                     <XIcon className='h-6 w-6' aria-hidden='true' />
                   </Popover.Button>
@@ -342,7 +336,10 @@ export const Navbar = () => {
               <div className='mt-6'>
                 <p className='mt-6 text-center text-base font-medium text-zinc-500'>
                   Existing client?{' '}
-                  <a href='#' className='text-indigo-600 hover:text-indigo-500'>
+                  <a
+                    href='#'
+                    className='text-primary-600 hover:text-primary-500'
+                  >
                     Sign in
                   </a>
                 </p>
@@ -358,7 +355,7 @@ export const Navbar = () => {
                         href={item.href}
                         className='-m-3 flex items-center p-3 rounded-lg hover:bg-primary-900/25 transition'
                       >
-                        <div className='flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12'>
+                        <div className='flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-primary-500 text-white sm:h-12 sm:w-12'>
                           <item.icon className='h-6 w-6' aria-hidden='true' />
                         </div>
                         <div className='ml-4 text-zinc-100 font-normal'>
@@ -370,7 +367,7 @@ export const Navbar = () => {
                   <div className='mt-8 text-base'>
                     <a
                       href='#'
-                      className='font-medium text-indigo-600 hover:text-indigo-500'
+                      className='font-medium text-primary-600 hover:text-primary-500'
                     >
                       {' '}
                       View all products <span aria-hidden='true'>&rarr;</span>

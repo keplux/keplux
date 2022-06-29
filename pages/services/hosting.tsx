@@ -1,6 +1,10 @@
 import { NextPage } from 'next';
-import Image from 'next/image';
-import { Header } from '../../src/components';
+import Link from 'next/link';
+
+import { Header, Split, SplitContainer } from '../../src/components';
+
+import hostingImg from '../../public/images/hosting.jpeg';
+
 import { HiDocumentAdd } from '@react-icons/all-files/hi/HiDocumentAdd';
 import { FaTools } from '@react-icons/all-files/fa/FaTools';
 import { FaServer } from '@react-icons/all-files/fa/FaServer';
@@ -9,8 +13,7 @@ import { FaImage } from '@react-icons/all-files/fa/FaImage';
 import { ImCloudUpload } from '@react-icons/all-files/im/ImCloudUpload';
 import { FaLock } from '@react-icons/all-files/fa/FaLock';
 import { BsFillShieldLockFill } from '@react-icons/all-files/bs/BsFillShieldLockFill';
-import Link from 'next/link';
-import hostingImg from '../../public/images/hosting.jpeg';
+
 
 const features = [
   {
@@ -71,51 +74,33 @@ const HostingPage: NextPage = () => {
         description='Yet another area with endless options, we can ease your hosting woes so you can grow your business without added stress.'
       />
       <main>
-        <article className='lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:grid-flow-col-dense lg:gap-24'>
-          <div className='px-4 max-w-xl mx-auto sm:px-6 lg:py-16 lg:max-w-none lg:mx-0 lg:px-0 lg:col-start-2'>
-            <div>
-              <span
-                aria-label='An image of a row of servers.'
-                className='h-12 w-12 rounded-md flex items-center justify-center bg-indigo-600'
-              >
-                <FaServer className='h-6 w-6 text-white' aria-hidden='true' />
-              </span>
-              <section className='mt-6'>
-                <h2 className='text-3xl font-semibold tracking-tight text-zinc-100'>
-                  Want to use your own hosting?
-                </h2>
-                <p className='mt-4'>
-                  We&apos;ll work with you to determine handoff instructions. We
-                  can also provide consultation for selecting a hosting provider
-                  or deploy the website to your current hosting provider.
-                </p>
-                <div className='mt-6'>
-                  <h3 className='text-zinc-100 text-xl font-semibold'>
-                    Ready to get started?
-                  </h3>
-                  <Link href='/services/content-updates'>
-                    <a className='mt-4 text-white bg-primary-600 border border-transparent rounded-md shadow px-5 py-3 inline-flex items-center text-base font-medium hover:bg-primary-500 transition'>
-                      Get a quote
-                    </a>
-                  </Link>
-                </div>
-              </section>
-            </div>
-          </div>
-          <div className='relative mt-12 lg:-ml-[512px] sm:mt-16 lg:mt-0 lg:col-start-1'>
-            <div className='lg:absolute right-0 w-full max-w-5xl lg:h-full'>
-              <div className='relative h-96 lg:h-full w-full rounded-xl overflow-hidden shadow-xl'>
-                <Image
-                  src={hostingImg}
-                  alt='Inbox user interface'
-                  layout='fill'
-                  objectFit='cover'
-                  objectPosition='top right'
-                />
+        <SplitContainer>
+          <Split
+            contentPosition='right'
+            imgSrc={hostingImg}
+            imgAlt='An long row of servers.'
+          >
+            <Split.Header>Want to use your own hosting?</Split.Header>
+            <Split.Body>
+              <p>
+                We&apos;ll work with you to determine handoff instructions. We
+                can also provide consultation for selecting a hosting provider
+                or deploy the website to your current hosting provider.
+              </p>
+              <div className='mt-6'>
+                <h3 className='text-zinc-100 text-xl font-semibold'>
+                  Ready to get started?
+                </h3>
+                <Link href='/services/content-updates'>
+                  <a className='mt-4 text-white bg-primary-600 border border-transparent rounded-md shadow px-5 py-3 inline-flex items-center text-base font-medium hover:bg-primary-500 transition'>
+                    Get a quote
+                  </a>
+                </Link>
               </div>
-            </div>
-          </div>
-        </article>
+            </Split.Body>
+          </Split>
+        </SplitContainer>
+
         <article className='relative mt-24 pb-16 bg-[#111111] sm:bg-zinc-900'>
           <div className='absolute -inset-0 h-1/3 lg:h-1/2 bg-[#111111]' />
           <div className='relative pb-32 bg-[#111111] w-full'>
@@ -175,7 +160,7 @@ const HostingPage: NextPage = () => {
                   <h4 className='text-xl font-medium text-zinc-100'>
                     {link.name}
                   </h4>
-                  <p className='mt-4 text-base text-gray-500'>
+                  <p className='mt-4 text-base text-zinc-500'>
                     {link.description}
                   </p>
                 </div>

@@ -3,14 +3,6 @@ import { NextPage } from 'next';
 const ErrorPage: NextPage = () => {
   return (
     <>
-      {/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full">
-        <body class="h-full">
-        ```
-      */}
       <div className='min-h-full px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8'>
         <div className='max-w-max mx-auto'>
           <main className='sm:flex'>
@@ -18,7 +10,7 @@ const ErrorPage: NextPage = () => {
               404
             </p>
             <div className='sm:ml-6'>
-              <div className='sm:border-l sm:border-gray-200 sm:pl-6'>
+              <div className='sm:border-l sm:border-zinc-200 sm:pl-6'>
                 <h1 className='text-4xl font-extrabold text-zinc-100 tracking-tight sm:text-5xl'>
                   Page not found
                 </h1>
