@@ -3,16 +3,14 @@ import { NextApiRequest, NextApiResponse } from 'next';
 let nodemailer = require('nodemailer');
 let aws = require('@aws-sdk/client-ses');
 
-import logo from '../../public/logos/keplux-dark-transparent.png'
-
 async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
   try {
     const { firstName, lastName, email, phone, message } = req.body;
 
     const ses = new SESClient({
       credentials: {
-        accessKeyId: process?.env?.AWS_ACCESS_KEY || '',
-        secretAccessKey: process?.env?.AWS_SECRET_ACCESS_KEY || '',
+        accessKeyId: process?.env?.K_AWS_ACCESS_KEY || '',
+        secretAccessKey: process?.env?.K_AWS_SECRET_ACCESS_KEY || '',
       },
       region: 'us-east-1',
     });
