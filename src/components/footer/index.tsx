@@ -3,7 +3,7 @@ import { SVGProps } from 'react';
 const navigation = [
   {
     name: 'Facebook',
-    href: '#',
+    href: 'https://www.facebook.com/kepluxdev',
     icon: (props: SVGProps<SVGSVGElement>) => (
       <svg fill='currentColor' viewBox='0 0 24 24' {...props}>
         <path
@@ -25,6 +25,8 @@ export const Footer = () => {
             <a
               key={item.name}
               href={item.href}
+              target='_blank'
+              rel='noreferrer'
               className='hover:text-secondary-500 transition'
             >
               <span className='sr-only'>{item.name}</span>
@@ -34,19 +36,7 @@ export const Footer = () => {
         </div>
         <div className='mt-8 md:mt-0 md:order-1'>
           <p className='text-center md:text-left'>
-            &copy; 2022 CoCo&apos;s Tree &amp; Lawn Service.
-          </p>
-          <p className='mt-0 text-center md:text-left'>
-            Designed and developed by{' '}
-            <a
-              className='text-zinc-300 hover:text-secondary-500 transition'
-              href='https://www.keplux.com'
-              target='_blank'
-              rel='noreferrer'
-            >
-              Keplux Development
-            </a>
-            .
+            &copy; 2022 Keplux Development. All rights reserverd.
           </p>
         </div>
       </div>
