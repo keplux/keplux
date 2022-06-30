@@ -78,7 +78,7 @@ const DesignPage: NextPage = () => {
                 <h3 className='text-zinc-100 text-xl font-semibold'>
                   Ready to get started?
                 </h3>
-                <Link href='https://developers.google.com/search/docs/beginner/seo-starter-guide'>
+                <Link href='/contact'>
                   <a className=' mt-4 text-white bg-primary-600 border border-transparent rounded-md shadow px-5 py-3 inline-flex items-center text-base font-medium hover:bg-primary-500 transition'>
                     Get started now
                   </a>

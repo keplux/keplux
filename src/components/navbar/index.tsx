@@ -21,6 +21,7 @@ import logo from '../../../public/logos/keplux-light-brand-transparent.png';
 import fullLogo from '../../../public/logos/keplux-light-transparent.png';
 import { classNames } from '../../../utils/classNames';
 import HeadlessLink from '../HeadlessLink';
+import { MdEmail } from '@react-icons/all-files/md/MdEmail';
 
 const solutions = [
   {
@@ -89,10 +90,6 @@ const mobileNav = [
   {
     label: 'Our Work',
     href: '/projects',
-  },
-  {
-    label: 'About Us',
-    href: '/about',
   },
   {
     label: 'Contact',
@@ -264,42 +261,47 @@ export const Navbar = () => {
         >
           <div className='rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-zinc-900 divide-y-2 divide-zinc-700'>
             <div className='py-6 px-5'>
-              <div className='flex items-center justify-end'>
+              <div className='flex items-center justify-end w-full'>
                 <Image
                   src={fullLogo}
                   alt='Keplux Development logo'
                   height={512}
                   objectFit='contain'
-                  objectPosition='left'
+                  objectPosition='center'
                 />
-                <div className='-mr-2'>
-                  <Popover.Button className='bg-zinc-900 rounded-md p-2 inline-flex items-center justify-center text-primary-500 hover:text-primary-700 hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500'>
+                <div className='relative -mr-2'>
+                  <Popover.Button className='absolute right-0 bottom-0 bg-zinc-900 rounded-md p-2 inline-flex items-center justify-center text-primary-500 hover:text-primary-700 hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500'>
                     <span className='sr-only'>Close menu</span>
                     <XIcon className='h-6 w-6' aria-hidden='true' />
                   </Popover.Button>
                 </div>
               </div>
-              <div className='mt-4 grid grid-cols-2 gap-4'>
-                {mobileNav.map((item) => {
-                  return (
-                    <Popover.Button
-                      as={HeadlessLink}
-                      key={item.label}
-                      href={item.href}
-                    >
-                      <a className='rounded-md !text-lg !capitalize font-medium link'>
-                        {item.label}
-                      </a>
-                    </Popover.Button>
-                  );
-                })}
+              <div>
+                <p className='font-semibold text-xl !text-zinc-100'>
+                  Navigation
+                </p>
+                <div className='mt-4 grid grid-cols-2 gap-4'>
+                  {mobileNav.map((item) => {
+                    return (
+                      <Popover.Button
+                        as={HeadlessLink}
+                        key={item.label}
+                        href={item.href}
+                      >
+                        <a className='rounded-md font-medium link'>
+                          {item.label}
+                        </a>
+                      </Popover.Button>
+                    );
+                  })}
+                </div>
               </div>
               <div className='mt-6'>
-                <p className='mt-6 text-center text-base font-medium text-zinc-500'>
+                <p className='mt-6 text-center text-base text-zinc-500'>
                   Existing client?{' '}
                   <a
                     href='#'
-                    className='text-primary-600 hover:text-primary-500'
+                    className='font-semibold text-primary-600 hover:text-primary-500'
                   >
                     Sign in
                   </a>
@@ -307,21 +309,31 @@ export const Navbar = () => {
               </div>
             </div>
             <div className='pt-5 pb-6 px-5 sm:pb-8'>
+              <p className='font-semibold text-xl !text-zinc-100'>Solutions</p>
               <div className='mt-6 sm:mt-8'>
                 <nav>
-                  <div className='grid gap-7 sm:grid-cols-2 sm:gap-y-8 sm:gap-x-4'>
-                    {solutions.map((item) => (
-                      <Link key={item.name} href={item.href}>
-                        <a className='-m-3 flex items-center p-3 rounded-lg hover:bg-primary-900/25 transition'>
-                          <div className='flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-primary-500 text-white sm:h-12 sm:w-12'>
-                            <item.icon className='h-6 w-6' aria-hidden='true' />
-                          </div>
-                          <div className='ml-4 text-zinc-100 font-normal'>
-                            {item.name}
-                          </div>
-                        </a>
-                      </Link>
-                    ))}
+                  <div className='grid gap-7 sm:grid-cols-2 sm:gap-y-8'>
+                    {solutions.map((item, index) => {
+                      return (
+                        <Popover.Button
+                          as={HeadlessLink}
+                          key={index}
+                          href={item.href}
+                        >
+                          <a className='-m-3 flex items-center p-3 rounded-lg hover:bg-primary-900/25 transition'>
+                            <div className='flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-primary-500 text-white sm:h-12 sm:w-12'>
+                              <item.icon
+                                className='h-6 w-6'
+                                aria-hidden='true'
+                              />
+                            </div>
+                            <div className='ml-4 text-zinc-100 font-normal'>
+                              {item.name}
+                            </div>
+                          </a>
+                        </Popover.Button>
+                      );
+                    })}
                   </div>
                 </nav>
               </div>

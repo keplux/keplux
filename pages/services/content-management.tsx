@@ -1,10 +1,11 @@
 import { NextPage } from 'next';
 import { Header, ImageOverlayContent, Seo } from '../../src/components';
 import sanityStudio from '../../public/images/sanity-studio.png';
-import { CheckIcon } from '@heroicons/react/outline';
 
+import {FaCheck} from '@react-icons/all-files/fa/FaCheck'
 import { FaServer } from '@react-icons/all-files/fa/FaServer';
 import { FaTools } from '@react-icons/all-files/fa/FaTools';
+
 import ContactFooter from '../../src/components/contact-footer/index';
 import Link from 'next/link';
 
@@ -78,17 +79,19 @@ const ContentManagementPage: NextPage = () => {
               {features.map((feature) => (
                 <div key={feature.name} className='relative'>
                   <dt>
-                    <CheckIcon
-                      className='absolute h-6 w-6 text-green-500'
+                    <FaCheck
+                      className='absolute h-6 w-6 text-primary-500'
                       aria-hidden='true'
                     />
-                    <p className='ml-9 text-left text-lg leading-6 font-medium !text-primary-600'>
+                    <p className='ml-9 text-left text-lg leading-6 font-medium !text-zinc-900'>
                       {feature.name}
                     </p>
+                    <p className='ml-9 text-base '>{feature.description}</p>
                   </dt>
                 </div>
               ))}
             </dl>
+            <p className='text-center mt-8 !text-black italic'>...and more!</p>
           </ImageOverlayContent.Body>
         </ImageOverlayContent>
 

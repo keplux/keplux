@@ -17,13 +17,13 @@ const Contact = () => {
         url='https://www.keplux.com/contact'
       />
       <Header
-        page='Contact'
+        subtitle='Contact'
         title='Give us a call, send an email, or fill out the form'
         description='We look forward to hearing from you!'
       />
 
-      <div className='relative'>
-        <div className='relative max-w-7xl mx-auto lg:grid lg:grid-cols-5'>
+      <main>
+        <div className='mt-16 lg:mt-24 relative max-w-7xl mx-auto lg:grid lg:grid-cols-5'>
           <div className='bg-zinc-900 py-16 px-4 sm:px-6 lg:col-span-2 lg:px-8 lg:py-24 xl:pr-12'>
             <div className='max-w-lg mx-auto'>
               <h2 className='text-2xl font-extrabold tracking-tight text-zinc-100 sm:text-3xl'>
@@ -78,7 +78,7 @@ const Contact = () => {
             </div>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 };

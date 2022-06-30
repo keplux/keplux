@@ -147,7 +147,7 @@ const Modal = ({
                       {state ? 'Message Sent' : 'Error'}
                     </Dialog.Title>
                     <div className='mt-2'>
-                      <p className='text-sm text-gray-500'>
+                      <p className='text-sm text-zinc-500'>
                         {state ? (
                           'We will get back to you as soon as possible.'
                         ) : (
@@ -308,7 +308,7 @@ export const ContactForm = () => {
           <button
             type='submit'
             disabled={isSubmitting}
-            className='mt-4 text-white bg-primary-600 border border-transparent rounded-md shadow px-5 py-3 inline-flex items-center text-base font-medium hover:bg-primary-500 transition disabled:bg-gray-400'
+            className='mt-4 text-white bg-primary-600 border border-transparent rounded-md shadow px-5 py-3 inline-flex items-center text-base font-medium hover:bg-primary-500 transition disabled:bg-zinc-400'
           >
             Send
           </button>

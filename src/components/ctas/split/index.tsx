@@ -1,7 +1,7 @@
 import Image, { StaticImageData } from 'next/image';
 import { ReactNode } from 'react';
 
-const Tag = ({ children }: { children: ReactNode }) => {
+export const Tag = ({ children }: { children: ReactNode }) => {
   return (
     <span
       className='mb-6 h-12 w-12 rounded-md flex items-center justify-center bg-primary-600 text-white'

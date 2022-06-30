@@ -64,7 +64,7 @@ const DevelopmentPage: NextPage = () => {
                 <h3 className='text-zinc-100 text-xl font-semibold'>
                   Join us in the modern digital age.
                 </h3>
-                <Link href='contact'>
+                <Link href='/contact'>
                   <a className='mt-4 text-white bg-primary-600 border border-transparent rounded-md shadow px-5 py-3 inline-flex items-center text-base font-medium hover:bg-primary-500 transition'>
                     Get a free quote
                   </a>
@@ -110,7 +110,7 @@ const DevelopmentPage: NextPage = () => {
                 <h3 className='text-zinc-100 text-xl font-semibold'>
                   We can also manage your content for you.
                 </h3>
-                <Link href='/services/content-updates'>
+                <Link href='/services/content-management'>
                   <a className='mt-4 text-white bg-primary-600 border border-transparent rounded-md shadow px-5 py-3 inline-flex items-center text-base font-medium hover:bg-primary-500 transition'>
                     Learn more
                   </a>
