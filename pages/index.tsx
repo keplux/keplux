@@ -92,7 +92,7 @@ const Home: NextPage = () => {
             </p>
             <p className='mt-4 !text-zinc-300'>
               We keep the site&apos;s bundle size small. Not only does it
-              increase load speed, but it makes maintenance easier, limits entry
+              decrease load speed, but it makes maintenance easier, limits entry
               points for online threats, and more.
             </p>
           </div>
