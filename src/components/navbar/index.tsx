@@ -276,7 +276,7 @@ export const Navbar = () => {
                   </Popover.Button>
                 </div>
               </div>
-              <div>
+              <div className='mt-8'>
                 <p className='font-semibold text-xl !text-zinc-100'>
                   Navigation
                 </p>
