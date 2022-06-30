@@ -65,7 +65,12 @@ const Contact = () => {
               </dl>
               <p className='mt-6 text-base text-zinc-500'>
                 Want to get a quote faster?{' '}
-                <a href='#' className='inline-link'>
+                <a
+                  href='https://forms.gle/TAToHhcw8ucqZzj59'
+                  target='_blank'
+                  rel='noreferrer'
+                  className='inline-link'
+                >
                   Fill it out here
                 </a>
                 .
